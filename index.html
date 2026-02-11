@@ -273,7 +273,7 @@ body::before{
     </div>
     <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇 Oppukokapothe neeku dammunte No click chey 😜</div>
     <div id="noTextAfterHover">No click cheddam ante miss ipoyindha ithe......</div>
-    <div id="yesTextTopRight">yenti yes button kuda miss ipoyindhaa padhu okkasari top right corner chudu akkada yes untaadhi</div>
+    <div id="yesTextTopRight">yenti Yes kuda miss ipoyindhaaa okkasari top right corner lo chudu kanipistaadhi</div>
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
         <button id="reject" class="btn">No 😜</button>
@@ -297,6 +297,8 @@ const accept=document.getElementById("accept");
 const noTextAfterHover=document.getElementById("noTextAfterHover");
 const yesTextTopRight=document.getElementById("yesTextTopRight");
 
+let noDisappeared = false; // track if No has disappeared
+
 // Hover buttons move
 function move(btn){
     btn.style.position="absolute";
@@ -307,19 +309,21 @@ document.getElementById("no1").onmouseover=document.getElementById("no1").ontouc
 document.getElementById("yes2").onmouseover=document.getElementById("yes2").ontouchstart=function(){move(this);}
 
 // Last page No hover
-reject.onmouseover=reject.ontouchstart=function(){ 
+reject.onmouseover = reject.ontouchstart = function(){ 
     move(this);
-    noTextAfterHover.style.display="block";
+    noTextAfterHover.style.display = "block";
+    noDisappeared = true;
 }
 
-// Last page Yes hover
-accept.onmouseover=accept.ontouchstart=function(){
-    accept.style.display="none";
-    yesTextTopRight.style.display="block";
+// Last page Yes hover - only works after No disappeared
+accept.onmouseover = accept.ontouchstart = function(){
+    if(!noDisappeared) return; // do nothing if No hasn't disappeared yet
+    accept.style.display = "none";
+    yesTextTopRight.style.display = "block";
 }
 
 // Top right text click triggers alert
-yesTextTopRight.onclick=function(){
+yesTextTopRight.onclick = function(){
     showFinalPopup();
     // hearts falling inside popup
     for(let i=0;i<50;i++){
@@ -363,4 +367,3 @@ function closeFinalPopup(){finalPopup.style.display="none";}
 </script>
 </body>
 </html>
-
