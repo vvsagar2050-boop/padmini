@@ -14,7 +14,7 @@ body{
     height:100vh;
 }
 
-/* FULL SCREEN BACKGROUND USING CSS */
+/* FULL SCREEN BACKGROUND */
 body::before{
     content:'';
     position:fixed;
@@ -55,6 +55,11 @@ body::before{
     pointer-events:none;
 }
 
+/* BLURRED BACKGROUND FOR PAGE 1 & 2 */
+.blur-bg{
+    filter:blur(10px);
+}
+
 /* PAGE 1 */
 #page1 h1{
     font-size:clamp(24px,5vw,42px);
@@ -76,7 +81,7 @@ body::before{
 #no1{background:black;color:white;position:relative;}
 
 #yes2{background:#ff3366;color:white;position:relative;}
-#no2{background:black;color:white;}
+#no2{background:black;color:white;position:relative;}
 
 #accept{background:#ff3366;color:white;}
 #reject{background:black;color:white;position:relative;}
@@ -160,7 +165,7 @@ body::before{
 /* FINAL CUSTOM ALERT */
 #finalPopup{
     position:fixed;
-    top:20%;
+    top:10%;
     left:50%;
     transform:translateX(-50%);
     background:white;
@@ -205,7 +210,7 @@ body::before{
 <audio id="music" src="music/love.mp3" loop></audio>
 
 <!-- PAGE 1 -->
-<div id="page1" class="page">
+<div id="page1" class="page blur-bg">
     <h1>Padhu, Will You Be My Valentine? ❤️</h1>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
@@ -214,9 +219,10 @@ body::before{
 </div>
 
 <!-- PAGE 2 -->
-<div id="page2" class="page hidden">
+<div id="page2" class="page hidden blur-bg">
     <div class="glass">
-        <h2>Hlo Hai Padhu 💖</h2>
+        <h2>Kidding Time! 😜💖</h2>
+        <p>Can you catch the buttons? Try to click Yes or No!</p>
         <button id="yes2" class="btn">Yes 😍</button>
         <button id="no2" class="btn">No 🙈</button>
     </div>
@@ -227,7 +233,7 @@ body::before{
     <div id="finalText">
         Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...<br>
         Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...<br>
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...<br><br>
+        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...<br>
         naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....<br><br>
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
@@ -240,7 +246,7 @@ body::before{
 
 <!-- FINAL CUSTOM POPUP -->
 <div id="finalPopup">
-    <h2>She Said YES! 💖🔥</h2>
+    <h2>Padhu said YES! 💖🔥</h2>
     <p>Thank you Padhu Navvinandhu 🙏✨</p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -260,7 +266,7 @@ function move(btn){
     btn.style.top=Math.random()*(window.innerHeight-50)+"px";
 }
 
-// Running buttons on hover / touch
+// Hover buttons run away
 document.getElementById("no1").ontouchstart=
 document.getElementById("no1").onmouseover=function(){move(this);}
 document.getElementById("yes2").ontouchstart=
