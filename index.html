@@ -9,7 +9,6 @@ body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
     overflow:hidden;
-    color:white;
     height:100vh;
 }
 
@@ -71,6 +70,8 @@ body::before{
     cursor:pointer;
     margin:10px;
 }
+
+/* PAGE 1 */
 #yes1{background:#ff3366;color:white;}
 #no1{background:black;color:white;}
 
@@ -121,7 +122,8 @@ body::before{
     font-size:clamp(16px,4vw,22px);
     line-height:1.7;
     text-align:left;
-    text-shadow:2px 2px 10px black;
+    text-shadow:2px 2px 10px white;
+    color:black; /* Changed to black */
 }
 #finalMsg{
     position:absolute;
@@ -129,6 +131,7 @@ body::before{
     left:5%;
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
+    color:black;
 }
 #proposalBtns{
     position:absolute;
@@ -137,6 +140,12 @@ body::before{
     display:flex;
     flex-wrap:wrap;
     gap:15px;
+}
+
+/* FINAL PAGE BUTTON STYLE */
+#proposalBtns .btn{
+    background:#ff3366; /* pink background */
+    color:white;         /* white text */
 }
 
 /* HEART FLOAT */
@@ -200,12 +209,10 @@ body::before{
     0%{transform:translateY(-30px);opacity:1;}
     100%{transform:translateY(200px) rotate(360deg);opacity:0;}
 }
-
 </style>
 </head>
 <body>
 
-<!-- BLUR OVERLAY -->
 <div class="blur-overlay"></div>
 
 <!-- PAGE 1 -->
@@ -231,13 +238,13 @@ body::before{
 <div id="page3" class="page hidden">
     <img src="img/p6.jpg" alt="Love Image">
     <div id="finalText">
-        Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...<br>
-        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...<br>
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...<br><br>
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....<br>
+        Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...
+        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
+        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
+        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
-    <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇<br>Oppukokapothe neeku dammunte No click chey 😜</div>
+    <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇 Oppukokapothe neeku dammunte No click chey 😜</div>
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
         <button id="reject" class="btn">No 😜</button>
