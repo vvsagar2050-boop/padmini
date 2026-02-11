@@ -5,19 +5,25 @@
 <title>For My Seetha ❤️</title>
 
 <style>
+/* BASE */
 body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
     overflow:hidden;
     color:white;
+    height:100vh;
 }
 
-/* BACKGROUND */
-.full-bg{
+/* FULL SCREEN BACKGROUND USING CSS */
+body::before{
+    content:'';
     position:fixed;
+    top:0; left:0;
     width:100%;
     height:100%;
-    object-fit:cover;
+    background-image:url('img/p6.jpg');
+    background-size:cover;
+    background-position:center;
     z-index:-2;
 }
 
@@ -25,11 +31,11 @@ body{
     position:fixed;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.5);
     z-index:-1;
 }
 
-/* PAGE */
+/* PAGE STYLING */
 .page{
     position:absolute;
     width:100%;
@@ -41,7 +47,7 @@ body{
     text-align:center;
     padding:20px;
     box-sizing:border-box;
-    transition:opacity 1s ease;
+    transition:opacity 0.5s ease;
 }
 
 .hidden{
@@ -49,9 +55,9 @@ body{
     pointer-events:none;
 }
 
-/* FIRST PAGE */
+/* PAGE 1 */
 #page1 h1{
-    font-size:clamp(24px, 5vw, 42px);
+    font-size:clamp(24px,5vw,42px);
     margin-bottom:30px;
     text-shadow:0 0 20px #ff4da6;
 }
@@ -59,7 +65,7 @@ body{
 /* BUTTONS */
 .btn{
     padding:12px 25px;
-    font-size:16px;
+    font-size:clamp(14px,4vw,18px);
     border:none;
     border-radius:8px;
     cursor:pointer;
@@ -91,27 +97,48 @@ body{
     margin-bottom:20px;
 }
 
-/* FINAL PAGE TEXT */
+/* FINAL PAGE */
+#page3{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
 #finalText{
-    max-width:700px;
+    position:absolute;
+    top:5%;
+    left:5%;
     width:90%;
+    max-width:700px;
     font-size:clamp(16px,4vw,22px);
     line-height:1.7;
     text-align:left;
-    margin-bottom:40px;
+    text-shadow: 2px 2px 10px black;
 }
 
-/* FINAL BUTTON AREA */
+#finalMsg{
+    position:absolute;
+    bottom:120px;
+    left:5%;
+    font-size:clamp(16px,4vw,20px);
+    font-weight:bold;
+}
+
+/* FINAL BUTTONS */
 #proposalBtns{
+    position:absolute;
+    bottom:40px;
+    left:5%;
     display:flex;
     flex-wrap:wrap;
-    justify-content:center;
+    gap:15px;
 }
 
 /* HEART FLOAT */
 .heart{
     position:absolute;
-    font-size:22px;
+    font-size:clamp(20px,5vw,28px);
     animation:float 3s linear forwards;
 }
 @keyframes float{
@@ -130,41 +157,50 @@ body{
     100%{transform:scale(3);opacity:0;}
 }
 
-/* FINAL POPUP */
+/* FINAL CUSTOM ALERT */
 #finalPopup{
     position:fixed;
-    top:50%;
+    top:20%;
     left:50%;
-    transform:translate(-50%,-50%);
-    background:rgba(255,0,102,0.9);
-    color:white;
-    padding:40px 30px;
+    transform:translateX(-50%);
+    background:white;
+    color:black;
+    padding:30px 25px;
     border-radius:20px;
     text-align:center;
-    font-size:22px;
-    box-shadow:0 0 40px rgba(255,0,102,0.5);
+    font-size:18px;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
     z-index:9999;
     display:none;
+    overflow:hidden;
 }
 
 #finalPopup button{
     margin-top:20px;
-    padding:12px 25px;
-    font-size:18px;
+    padding:10px 20px;
+    font-size:16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
-    background:white;
-    color:#ff3366;
+    background:#ff3366;
+    color:white;
     font-weight:bold;
+}
+
+/* FALLING FLOWERS */
+.flower{
+    position:absolute;
+    font-size:20px;
+    animation:fall 3s linear forwards;
+}
+@keyframes fall{
+    0%{transform:translateY(-30px);opacity:1;}
+    100%{transform:translateY(200px) rotate(360deg);opacity:0;}
 }
 </style>
 </head>
 
 <body>
-
-<img src="img/p6.jpg" class="full-bg">
-<div class="overlay"></div>
 
 <audio id="music" src="music/love.mp3" loop></audio>
 
@@ -188,15 +224,21 @@ body{
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-    <div id="finalText"></div>
-
+    <div id="finalText">
+        Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...<br>
+        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...<br>
+        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...<br><br>
+        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....<br><br>
+        <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
+    </div>
+    <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇<br>Oppukokapothe neeku dammunte No click chey 😜</div>
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
         <button id="reject" class="btn">No 😜</button>
     </div>
 </div>
 
-<!-- FINAL POPUP -->
+<!-- FINAL CUSTOM POPUP -->
 <div id="finalPopup">
     <h2>She Said YES! 💖🔥</h2>
     <p>Thank you Padhu Navvinandhu 🙏✨</p>
@@ -209,89 +251,83 @@ const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const music=document.getElementById("music");
 const finalPopup=document.getElementById("finalPopup");
+const reject=document.getElementById("reject");
 
+// Move button function
 function move(btn){
     btn.style.position="absolute";
     btn.style.left=Math.random()*(window.innerWidth-100)+"px";
-    btn.style.top=Math.random()*window.innerHeight+"px";
+    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
 }
 
-// Make running buttons work on hover & touch
+// Running buttons on hover / touch
 document.getElementById("no1").ontouchstart=
 document.getElementById("no1").onmouseover=function(){move(this);}
 document.getElementById("yes2").ontouchstart=
 document.getElementById("yes2").onmouseover=function(){move(this);}
-document.getElementById("reject").ontouchstart=
-document.getElementById("reject").onmouseover=function(){move(this);}
+reject.ontouchstart=reject.onmouseover=function(){move(this);}
 
-// PAGE TRANSITIONS
+// PAGE 1 → PAGE 2
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
 }
 
+// PAGE 2 → PAGE 3
 document.getElementById("no2").onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
     music.play();
-    typeText();
     hearts();
 }
 
-/* TYPEWRITER */
-const message=`Anjaneyudi balam🔥💪...
-Anna maata javadaatani Lakshmanudu⚔️...
-Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
-Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-naku veellu yevaru lekapoina,
-naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....
-
-Pls nuv naa seethavi avuthaava??...`;
-
-function typeText(){
-let i=0;
-function typing(){
-if(i<message.length){
-document.getElementById("finalText").innerHTML+=message.charAt(i);
-i++;
-setTimeout(typing,30);
-}
-}
-typing();
-}
-
-/* HEARTS */
+// FINAL PAGE HEARTS
 function hearts(){
-setInterval(()=>{
-const heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*window.innerWidth+"px";
-heart.style.top=window.innerHeight+"px";
-page3.appendChild(heart);
-setTimeout(()=>heart.remove(),3000);
-},300);
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.top=window.innerHeight+"px";
+        page3.appendChild(heart);
+        setTimeout(()=>heart.remove(),3000);
+    },300);
 }
 
-/* FIREWORK + CUSTOM POPUP */
+// FINAL PAGE YES → SHOW CUSTOM ALERT + FLOWERS
 document.getElementById("accept").onclick=function(){
-for(let i=0;i<25;i++){
-    const fw=document.createElement("div");
-    fw.className="firework";
-    fw.innerHTML="💥";
-    fw.style.left=Math.random()*window.innerWidth+"px";
-    fw.style.top=Math.random()*window.innerHeight+"px";
-    page3.appendChild(fw);
-    setTimeout(()=>fw.remove(),1000);
-}
-showFinalPopup();
+    for(let i=0;i<25;i++){
+        const fw=document.createElement("div");
+        fw.className="firework";
+        fw.innerHTML="💥";
+        fw.style.left=Math.random()*window.innerWidth+"px";
+        fw.style.top=Math.random()*window.innerHeight+"px";
+        page3.appendChild(fw);
+        setTimeout(()=>fw.remove(),1000);
+    }
+    showFinalPopup();
+    flowers();
 }
 
+// SHOW / HIDE FINAL POPUP
 function showFinalPopup(){
     finalPopup.style.display="block";
 }
 function closeFinalPopup(){
     finalPopup.style.display="none";
+}
+
+// RED FLOWERS ANIMATION
+function flowers(){
+    for(let i=0;i<50;i++){
+        const f=document.createElement("div");
+        f.className="flower";
+        f.innerHTML="🌹";
+        f.style.left=Math.random()*finalPopup.offsetWidth+"px";
+        f.style.top="-50px";
+        finalPopup.appendChild(f);
+        setTimeout(()=>f.remove(),3000);
+    }
 }
 </script>
 
