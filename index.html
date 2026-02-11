@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Be My Valentine ❤️</title>
+    <title>For Padhu ❤️</title>
     <style>
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background: #ffe6f0;
-            overflow: hidden;
             margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            overflow: hidden;
+            transition: background 1s ease;
         }
 
         h1 {
             margin-top: 100px;
-            color: #ff3366;
+            color: #ff0066;
         }
 
         .btn {
@@ -25,36 +26,46 @@
             position: absolute;
         }
 
-        #yes {
-            background-color: #ff3366;
+        /* PAGE 1 BUTTONS */
+        #yes1 {
+            background: #ff3366;
             color: white;
             left: 45%;
             top: 55%;
         }
 
-        #no {
-            background-color: #333;
+        #no1 {
+            background: black;
             color: white;
             left: 55%;
             top: 55%;
         }
 
-        /* POPUP STYLE */
-        .popup {
+        /* PAGE 2 MODAL */
+        .modal {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
             z-index: 1000;
-            text-align: center;
+            animation: pop 0.4s ease;
         }
 
-        .popup button {
+        @keyframes pop {
+            from { transform: translate(-50%, -50%) scale(0.5); }
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .modal h2 {
+            color: #ff0066;
+        }
+
+        .modal button {
             padding: 10px 20px;
             margin: 10px;
             border: none;
@@ -63,119 +74,135 @@
             font-size: 16px;
         }
 
-        .popup-yes {
+        #yes2 {
             background: #ff3366;
-            color: white;
-        }
-
-        .popup-no {
-            background: black;
             color: white;
             position: relative;
         }
 
-        /* HEART ANIMATION */
+        #no2 {
+            background: black;
+            color: white;
+        }
+
+        /* PAGE 3 */
+        #page3 {
+            display: none;
+            margin-top: 80px;
+        }
+
+        #page3 img {
+            width: 280px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        /* HEARTS */
         .heart {
             position: fixed;
             color: red;
             font-size: 20px;
-            animation: float 3s linear infinite;
+            animation: floatUp 3s linear forwards;
         }
 
-        @keyframes float {
+        @keyframes floatUp {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(0);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-600px) rotate(360deg);
+                transform: translateY(-600px);
                 opacity: 0;
             }
         }
 
-        /* FINAL PAGE */
-        #finalPage {
-            display: none;
-            margin-top: 100px;
-        }
-
-        #finalPage img {
-            width: 300px;
-            border-radius: 20px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
 
+<!-- PAGE 1 -->
 <h1 id="mainText">Padhu, Will you be my Valentine? ❤️</h1>
 
-<button id="yes" class="btn">Yes 💖</button>
-<button id="no" class="btn">No 😜</button>
+<button id="yes1" class="btn">Yes 💖</button>
+<button id="no1" class="btn">No 😜</button>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
+<!-- PAGE 2 -->
+<div class="modal" id="page2">
     <h2>Hlo hai Padhu 💖</h2>
-    <button class="popup-yes" id="popupYes">Yes 💘</button>
-    <button class="popup-no" id="popupNo">No 😝</button>
+    <button id="yes2">Yes 😍</button>
+    <button id="no2">No 🙈</button>
 </div>
 
-<!-- FINAL PAGE -->
-<div id="finalPage">
-    <h1>I Love You Forever Padhu ❤️🥰</h1>
-    <img src="https://i.imgur.com/4M34hi2.png" alt="Love Image">
+<!-- PAGE 3 -->
+<div id="page3">
+    <h1>Anjaneyudi Balam ❤️</h1>
+    <!-- Make sure p2.jpg is in same folder -->
+    <img src="p2.jpg" alt="Love Image">
 </div>
 
 <script>
 
-    const noBtn = document.getElementById('no');
-    const popup = document.getElementById('popup');
-    const popupNo = document.getElementById('popupNo');
-    const popupYes = document.getElementById('popupYes');
+    const no1 = document.getElementById("no1");
+    const yes1 = document.getElementById("yes1");
+    const page2 = document.getElementById("page2");
+    const yes2 = document.getElementById("yes2");
+    const no2 = document.getElementById("no2");
+    const page3 = document.getElementById("page3");
 
-    /* FIRST PAGE NO BUTTON RUNS */
-    noBtn.addEventListener('mouseover', () => {
-        moveButton(noBtn);
+    // PAGE 1 NO RUNS AWAY
+    no1.addEventListener("mouseover", () => {
+        moveButton(no1);
     });
 
-    /* CLICK YES → SHOW POPUP + HEARTS */
-    document.getElementById('yes').onclick = () => {
-        popup.style.display = "block";
+    // PAGE 1 YES → PAGE 2
+    yes1.onclick = () => {
+        document.getElementById("mainText").style.display = "none";
+        yes1.style.display = "none";
+        no1.style.display = "none";
+        page2.style.display = "block";
+
+        // Change Background for Page 2
+        document.body.style.background =
+            "linear-gradient(to right, #c2e9fb, #a1c4fd)";
+    };
+
+    // PAGE 2 REVERSE LOGIC
+
+    // YES RUNS AWAY
+    yes2.addEventListener("mouseover", () => {
+        moveButton(yes2);
+    });
+
+    // NO GOES TO PAGE 3
+    no2.onclick = () => {
+        page2.style.display = "none";
+        page3.style.display = "block";
+
+        // Change Background for Page 3
+        document.body.style.background =
+            "linear-gradient(to right, #ff758c, #ff7eb3)";
+
         startHearts();
     };
 
-    /* POPUP NO BUTTON (REVERSE LOGIC) */
-    popupNo.addEventListener('mouseover', () => {
-        moveButton(popupNo);
-    });
-
-    /* FINAL YES */
-    popupYes.onclick = () => {
-        document.getElementById('mainText').style.display = "none";
-        document.getElementById('yes').style.display = "none";
-        document.getElementById('no').style.display = "none";
-        popup.style.display = "none";
-        document.getElementById('finalPage').style.display = "block";
-    };
-
-    /* FUNCTION TO MOVE BUTTON */
-    function moveButton(button) {
+    // FUNCTION TO MOVE BUTTON
+    function moveButton(btn) {
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
-        button.style.position = "absolute";
-        button.style.left = x + "px";
-        button.style.top = y + "px";
+        btn.style.position = "absolute";
+        btn.style.left = x + "px";
+        btn.style.top = y + "px";
     }
 
-    /* CREATE FLOATING HEARTS */
+    // HEARTS EFFECT FOR PAGE 3
     function startHearts() {
         setInterval(() => {
             const heart = document.createElement("div");
-            heart.classList.add("heart");
+            heart.className = "heart";
             heart.innerHTML = "❤️";
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.top = "100vh";
-            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
             document.body.appendChild(heart);
 
             setTimeout(() => {
