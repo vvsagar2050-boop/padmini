@@ -4,196 +4,166 @@
 <title>For My Seetha ❤️</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
-    background: linear-gradient(to right, #ffdde1, #ee9ca7);
-    transition: background 1s ease;
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+    color:white;
 }
 
-/* PAGE 1 */
-#page1 h1 {
-    margin-top: 120px;
-    text-align: center;
-    color: #ff0066;
+/* COMMON BACKGROUND */
+.full-bg{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    object-fit:cover;
+    z-index:-2;
 }
 
-.btn {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    position: absolute;
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,0.6);
+    z-index:-1;
 }
 
-#yes1 {
-    background: #ff3366;
-    color: white;
-    left: 45%;
-    top: 55%;
+/* PAGE SECTIONS */
+.page{
+    position:absolute;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    transition:opacity 1s ease;
 }
 
-#no1 {
-    background: black;
-    color: white;
-    left: 55%;
-    top: 55%;
+.hidden{
+    opacity:0;
+    pointer-events:none;
 }
 
-/* PAGE 2 */
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
-    text-align: center;
-    transition: 0.4s ease;
+/* FIRST PAGE */
+#page1 h1{
+    font-size:40px;
+    text-shadow:0 0 20px #ff4da6;
+    margin-bottom:40px;
 }
 
-.modal.show {
-    transform: translate(-50%, -50%) scale(1);
+.btn{
+    padding:12px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin:10px;
 }
 
-.modal button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+#yes1{background:#ff3366;color:white;}
+#no1{background:black;color:white;position:relative;}
+
+/* SECOND PAGE - GLASS STYLE */
+.glass{
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.1);
+    padding:50px;
+    border-radius:20px;
+    box-shadow:0 0 40px rgba(255,255,255,0.2);
+    text-align:center;
 }
 
-#yes2 {
-    background: #ff3366;
-    color: white;
-    position: relative;
+.glass h2{
+    font-size:30px;
+    margin-bottom:30px;
 }
 
-#no2 {
-    background: black;
-    color: white;
+#yes2{background:#ff3366;color:white;position:relative;}
+#no2{background:black;color:white;}
+
+/* FINAL PAGE TEXT */
+#finalText{
+    position:absolute;
+    left:60px;
+    top:80px;
+    width:50%;
+    font-size:22px;
+    line-height:1.8;
 }
 
-/* PAGE 3 */
-#page3 {
-    display: none;
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    color: white;
+/* FINAL BUTTONS */
+#proposalBtns{
+    position:absolute;
+    bottom:80px;
+    left:60px;
 }
 
-#bgImage {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    animation: zoom 20s infinite alternate;
+#proposalBtns button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    margin-right:20px;
+    cursor:pointer;
 }
 
-@keyframes zoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
-}
+#accept{background:#ff3366;color:white;}
+#reject{background:black;color:white;position:relative;}
 
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
+/* HEART FLOAT */
+.heart{
+    position:absolute;
+    font-size:24px;
+    animation:float 3s linear forwards;
 }
-
-#finalText {
-    position: absolute;
-    top: 80px;
-    left: 50px;
-    width: 50%;
-    font-size: 22px;
-    line-height: 1.8;
-}
-
-#proposalBtns {
-    position: absolute;
-    bottom: 80px;
-    left: 50px;
-}
-
-#proposalBtns button {
-    padding: 12px 25px;
-    font-size: 18px;
-    margin-right: 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-#accept {
-    background: #ff3366;
-    color: white;
-}
-
-#reject {
-    background: black;
-    color: white;
-    position: relative;
-}
-
-/* HEARTS */
-.heart {
-    position: absolute;
-    font-size: 25px;
-    animation: float 3s linear forwards;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-300px); opacity: 0; }
+@keyframes float{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-300px);opacity:0;}
 }
 
 /* FIREWORK */
-.firework {
-    position: absolute;
-    font-size: 30px;
-    animation: boom 1s ease-out forwards;
+.firework{
+    position:absolute;
+    font-size:30px;
+    animation:boom 1s ease-out forwards;
+}
+@keyframes boom{
+    0%{transform:scale(0.5);opacity:1;}
+    100%{transform:scale(3);opacity:0;}
 }
 
-@keyframes boom {
-    0% { transform: scale(0.5); opacity: 1; }
-    100% { transform: scale(3); opacity: 0; }
-}
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
+<!-- BACKGROUND IMAGE (USED FOR ALL PAGES) -->
+<img src="img/p6.jpg" class="full-bg">
+<div class="overlay"></div>
+
 <audio id="music" src="music/love.mp3" loop></audio>
 
 <!-- PAGE 1 -->
-<div id="page1">
-    <h1>Padhu, Will you be my Valentine? ❤️</h1>
-    <button id="yes1" class="btn">Yes 💖</button>
-    <button id="no1" class="btn">No 😜</button>
+<div id="page1" class="page">
+    <h1>Padhu, Will You Be My Valentine? ❤️</h1>
+    <div>
+        <button id="yes1" class="btn">Yes 💖</button>
+        <button id="no1" class="btn">No 😜</button>
+    </div>
 </div>
 
 <!-- PAGE 2 -->
-<div class="modal" id="page2">
-    <h2>Hlo hai Padhu 💖</h2>
-    <button id="yes2">Yes 😍</button>
-    <button id="no2">No 🙈</button>
+<div id="page2" class="page hidden">
+    <div class="glass">
+        <h2>Hlo Hai Padhu 💖</h2>
+        <button id="yes2" class="btn">Yes 😍</button>
+        <button id="no2" class="btn">No 🙈</button>
+    </div>
 </div>
 
 <!-- PAGE 3 -->
-<div id="page3">
-    <img src="img/p6.jpg" id="bgImage">
-    <div class="overlay"></div>
+<div id="page3" class="page hidden">
 
     <div id="finalText"></div>
 
@@ -201,45 +171,43 @@ body {
         <button id="accept">Yes 💍</button>
         <button id="reject">No 😜</button>
     </div>
+
 </div>
 
 <script>
 
-const no1 = document.getElementById("no1");
-const yes1 = document.getElementById("yes1");
-const page2 = document.getElementById("page2");
-const yes2 = document.getElementById("yes2");
-const no2 = document.getElementById("no2");
-const page3 = document.getElementById("page3");
-const music = document.getElementById("music");
+const page1=document.getElementById("page1");
+const page2=document.getElementById("page2");
+const page3=document.getElementById("page3");
+const music=document.getElementById("music");
 
-no1.onmouseover = () => move(no1);
+/* BUTTON MOVEMENT */
+function move(btn){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*window.innerWidth+"px";
+    btn.style.top=Math.random()*window.innerHeight+"px";
+}
 
-yes1.onclick = () => {
-    page2.style.display = "block";
-    setTimeout(() => page2.classList.add("show"), 10);
-    document.body.style.background = "#a1c4fd";
-};
+document.getElementById("no1").onmouseover=function(){move(this);}
+document.getElementById("yes2").onmouseover=function(){move(this);}
+document.getElementById("reject").onmouseover=function(){move(this);}
 
-yes2.onmouseover = () => move(yes2);
+/* PAGE TRANSITIONS */
+document.getElementById("yes1").onclick=function(){
+    page1.classList.add("hidden");
+    page2.classList.remove("hidden");
+}
 
-no2.onclick = () => {
-    page2.style.display = "none";
-    page3.style.display = "block";
-    document.body.style.background = "black";
+document.getElementById("no2").onclick=function(){
+    page2.classList.add("hidden");
+    page3.classList.remove("hidden");
     music.play();
     typeText();
     hearts();
-};
-
-function move(btn){
-    btn.style.position = "absolute";
-    btn.style.left = Math.random()*window.innerWidth+"px";
-    btn.style.top = Math.random()*window.innerHeight+"px";
 }
 
 /* TYPEWRITER */
-const message = `Anjaneyudi balam🔥💪...
+const message=`Anjaneyudi balam🔥💪...
 Anna maata javadaatani Lakshmanudu⚔️...
 Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
 Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
@@ -250,48 +218,43 @@ naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....
 Pls nuv naa seethavi avuthaava??...`;
 
 function typeText(){
-    let i = 0;
-    const speed = 40;
-    function typing(){
-        if(i < message.length){
-            document.getElementById("finalText").innerHTML += message.charAt(i);
-            i++;
-            setTimeout(typing, speed);
-        }
-    }
-    typing();
+let i=0;
+function typing(){
+if(i<message.length){
+document.getElementById("finalText").innerHTML+=message.charAt(i);
+i++;
+setTimeout(typing,35);
+}
+}
+typing();
 }
 
-/* HEART FLOAT */
+/* HEARTS */
 function hearts(){
-    setInterval(()=>{
-        const heart = document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.top=window.innerHeight+"px";
-        page3.appendChild(heart);
-        setTimeout(()=>heart.remove(),3000);
-    },300);
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*window.innerWidth+"px";
+heart.style.top=window.innerHeight+"px";
+page3.appendChild(heart);
+setTimeout(()=>heart.remove(),3000);
+},300);
 }
 
-/* FINAL BUTTONS */
-document.getElementById("reject").onmouseover = function(){
-    move(this);
-};
-
-document.getElementById("accept").onclick = function(){
-    for(let i=0;i<20;i++){
-        const fw = document.createElement("div");
-        fw.className="firework";
-        fw.innerHTML="💥";
-        fw.style.left=Math.random()*window.innerWidth+"px";
-        fw.style.top=Math.random()*window.innerHeight+"px";
-        page3.appendChild(fw);
-        setTimeout(()=>fw.remove(),1000);
-    }
-    alert("She Said YES! 💖🔥");
-};
+/* FIREWORK */
+document.getElementById("accept").onclick=function(){
+for(let i=0;i<25;i++){
+const fw=document.createElement("div");
+fw.className="firework";
+fw.innerHTML="💥";
+fw.style.left=Math.random()*window.innerWidth+"px";
+fw.style.top=Math.random()*window.innerHeight+"px";
+page3.appendChild(fw);
+setTimeout(()=>fw.remove(),1000);
+}
+alert("She Said YES! 💖🔥");
+}
 
 </script>
 
