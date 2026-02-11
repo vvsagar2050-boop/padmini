@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Seetha ❤️</title>
 
 <style>
@@ -11,32 +12,35 @@ body{
     color:white;
 }
 
-/* COMMON BACKGROUND */
+/* BACKGROUND */
 .full-bg{
-    position:absolute;
+    position:fixed;
     width:100%;
-    height:100vh;
+    height:100%;
     object-fit:cover;
     z-index:-2;
 }
 
 .overlay{
-    position:absolute;
+    position:fixed;
     width:100%;
-    height:100vh;
+    height:100%;
     background:rgba(0,0,0,0.6);
     z-index:-1;
 }
 
-/* PAGE SECTIONS */
+/* PAGE */
 .page{
     position:absolute;
     width:100%;
-    height:100vh;
+    height:100%;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    text-align:center;
+    padding:20px;
+    box-sizing:border-box;
     transition:opacity 1s ease;
 }
 
@@ -47,14 +51,15 @@ body{
 
 /* FIRST PAGE */
 #page1 h1{
-    font-size:40px;
+    font-size:clamp(24px, 5vw, 42px);
+    margin-bottom:30px;
     text-shadow:0 0 20px #ff4da6;
-    margin-bottom:40px;
 }
 
+/* BUTTONS */
 .btn{
-    padding:12px 28px;
-    font-size:18px;
+    padding:12px 25px;
+    font-size:16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
@@ -64,57 +69,49 @@ body{
 #yes1{background:#ff3366;color:white;}
 #no1{background:black;color:white;position:relative;}
 
-/* SECOND PAGE - GLASS STYLE */
-.glass{
-    backdrop-filter:blur(15px);
-    background:rgba(255,255,255,0.1);
-    padding:50px;
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(255,255,255,0.2);
-    text-align:center;
-}
-
-.glass h2{
-    font-size:30px;
-    margin-bottom:30px;
-}
-
 #yes2{background:#ff3366;color:white;position:relative;}
 #no2{background:black;color:white;}
-
-/* FINAL PAGE TEXT */
-#finalText{
-    position:absolute;
-    left:60px;
-    top:80px;
-    width:50%;
-    font-size:22px;
-    line-height:1.8;
-}
-
-/* FINAL BUTTONS */
-#proposalBtns{
-    position:absolute;
-    bottom:80px;
-    left:60px;
-}
-
-#proposalBtns button{
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:8px;
-    margin-right:20px;
-    cursor:pointer;
-}
 
 #accept{background:#ff3366;color:white;}
 #reject{background:black;color:white;position:relative;}
 
+/* GLASS CARD */
+.glass{
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.1);
+    padding:40px 25px;
+    border-radius:20px;
+    box-shadow:0 0 40px rgba(255,255,255,0.2);
+    width:90%;
+    max-width:400px;
+}
+
+.glass h2{
+    font-size:clamp(22px,4vw,30px);
+    margin-bottom:20px;
+}
+
+/* FINAL PAGE TEXT */
+#finalText{
+    max-width:700px;
+    width:90%;
+    font-size:clamp(16px,4vw,22px);
+    line-height:1.7;
+    text-align:left;
+    margin-bottom:40px;
+}
+
+/* FINAL BUTTON AREA */
+#proposalBtns{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
 /* HEART FLOAT */
 .heart{
     position:absolute;
-    font-size:24px;
+    font-size:22px;
     animation:float 3s linear forwards;
 }
 @keyframes float{
@@ -125,7 +122,7 @@ body{
 /* FIREWORK */
 .firework{
     position:absolute;
-    font-size:30px;
+    font-size:28px;
     animation:boom 1s ease-out forwards;
 }
 @keyframes boom{
@@ -133,12 +130,39 @@ body{
     100%{transform:scale(3);opacity:0;}
 }
 
+/* FINAL POPUP */
+#finalPopup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,0,102,0.9);
+    color:white;
+    padding:40px 30px;
+    border-radius:20px;
+    text-align:center;
+    font-size:22px;
+    box-shadow:0 0 40px rgba(255,0,102,0.5);
+    z-index:9999;
+    display:none;
+}
+
+#finalPopup button{
+    margin-top:20px;
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:white;
+    color:#ff3366;
+    font-weight:bold;
+}
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND IMAGE (USED FOR ALL PAGES) -->
 <img src="img/p6.jpg" class="full-bg">
 <div class="overlay"></div>
 
@@ -164,35 +188,43 @@ body{
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-
     <div id="finalText"></div>
 
     <div id="proposalBtns">
-        <button id="accept">Yes 💍</button>
-        <button id="reject">No 😜</button>
+        <button id="accept" class="btn">Yes 💍</button>
+        <button id="reject" class="btn">No 😜</button>
     </div>
+</div>
 
+<!-- FINAL POPUP -->
+<div id="finalPopup">
+    <h2>She Said YES! 💖🔥</h2>
+    <p>Thank you Padhu Navvinandhu 🙏✨</p>
+    <button onclick="closeFinalPopup()">Close</button>
 </div>
 
 <script>
-
 const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const music=document.getElementById("music");
+const finalPopup=document.getElementById("finalPopup");
 
-/* BUTTON MOVEMENT */
 function move(btn){
     btn.style.position="absolute";
-    btn.style.left=Math.random()*window.innerWidth+"px";
+    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
     btn.style.top=Math.random()*window.innerHeight+"px";
 }
 
+// Make running buttons work on hover & touch
+document.getElementById("no1").ontouchstart=
 document.getElementById("no1").onmouseover=function(){move(this);}
+document.getElementById("yes2").ontouchstart=
 document.getElementById("yes2").onmouseover=function(){move(this);}
+document.getElementById("reject").ontouchstart=
 document.getElementById("reject").onmouseover=function(){move(this);}
 
-/* PAGE TRANSITIONS */
+// PAGE TRANSITIONS
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
@@ -211,7 +243,6 @@ const message=`Anjaneyudi balam🔥💪...
 Anna maata javadaatani Lakshmanudu⚔️...
 Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
 Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-
 naku veellu yevaru lekapoina,
 naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....
 
@@ -223,7 +254,7 @@ function typing(){
 if(i<message.length){
 document.getElementById("finalText").innerHTML+=message.charAt(i);
 i++;
-setTimeout(typing,35);
+setTimeout(typing,30);
 }
 }
 typing();
@@ -242,20 +273,26 @@ setTimeout(()=>heart.remove(),3000);
 },300);
 }
 
-/* FIREWORK */
+/* FIREWORK + CUSTOM POPUP */
 document.getElementById("accept").onclick=function(){
 for(let i=0;i<25;i++){
-const fw=document.createElement("div");
-fw.className="firework";
-fw.innerHTML="💥";
-fw.style.left=Math.random()*window.innerWidth+"px";
-fw.style.top=Math.random()*window.innerHeight+"px";
-page3.appendChild(fw);
-setTimeout(()=>fw.remove(),1000);
+    const fw=document.createElement("div");
+    fw.className="firework";
+    fw.innerHTML="💥";
+    fw.style.left=Math.random()*window.innerWidth+"px";
+    fw.style.top=Math.random()*window.innerHeight+"px";
+    page3.appendChild(fw);
+    setTimeout(()=>fw.remove(),1000);
 }
-alert("She Said YES! 💖🔥");
+showFinalPopup();
 }
 
+function showFinalPopup(){
+    finalPopup.style.display="block";
+}
+function closeFinalPopup(){
+    finalPopup.style.display="none";
+}
 </script>
 
 </body>
