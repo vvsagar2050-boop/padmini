@@ -1,121 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Valentine 💖</title>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #ffe6ea; /* First page background color */
-    font-family: Arial, sans-serif;
-    text-align: center;
-    transition: background 0.5s ease;
-    overflow: hidden;
-    margin: 0;
-  }
+    <title>Be My Valentine ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: #ffe6f0;
+            overflow: hidden;
+            margin: 0;
+        }
 
-  h1 {
-    color: #e6005c;
-    z-index: 2;
-    position: relative;
-  }
+        h1 {
+            margin-top: 100px;
+            color: #ff3366;
+        }
 
-  .buttons {
-    margin-top: 30px;
-    position: relative;
-    z-index: 2;
-  }
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: absolute;
+        }
 
-  button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
+        #yes {
+            background-color: #ff3366;
+            color: white;
+            left: 45%;
+            top: 55%;
+        }
 
-  #yes {
-    background: #ff4d88;
-    color: white;
-    margin-right: 20px;
-  }
+        #no {
+            background-color: #333;
+            color: white;
+            left: 55%;
+            top: 55%;
+        }
 
-  #no {
-    background: #cccccc;
-    position: absolute;
-  }
-  #text-clr{
-    color:#FFFF00;
-    line-height:1.4;
-  }
+        /* POPUP STYLE */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-align: center;
+        }
 
-  /* Background image container for after Yes click */
-  #bgImage {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('img/p4.jpg') no-repeat center center;
-    background-size: cover;
-    filter: blur(5px);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 1s ease;
-  }
-</style>
+        .popup button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .popup-yes {
+            background: #ff3366;
+            color: white;
+        }
+
+        .popup-no {
+            background: black;
+            color: white;
+            position: relative;
+        }
+
+        /* HEART ANIMATION */
+        .heart {
+            position: fixed;
+            color: red;
+            font-size: 20px;
+            animation: float 3s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* FINAL PAGE */
+        #finalPage {
+            display: none;
+            margin-top: 100px;
+        }
+
+        #finalPage img {
+            width: 300px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<div id="mainContent">
-  <h1>Hloo Hai....Padhu 💕<br>Will you be my Valentine?</h1>
-  <h2> firstuu neeku istam ledhu kaaabatti No click chey <h2>
-  <div class="buttons">
-    <button id="yes" onclick="yesClicked()">Yes 💖</button>
-    <button id="no" onmouseover="moveNo()">No 😜</button>
-  </div>
+<h1 id="mainText">Padhu, Will you be my Valentine? ❤️</h1>
+
+<button id="yes" class="btn">Yes 💖</button>
+<button id="no" class="btn">No 😜</button>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <h2>Hlo hai Padhu 💖</h2>
+    <button class="popup-yes" id="popupYes">Yes 💘</button>
+    <button class="popup-no" id="popupNo">No 😝</button>
 </div>
 
-<!-- Background image div -->
-<div id="bgImage"></div>
+<!-- FINAL PAGE -->
+<div id="finalPage">
+    <h1>I Love You Forever Padhu ❤️🥰</h1>
+    <img src="https://i.imgur.com/4M34hi2.png" alt="Love Image">
+</div>
 
 <script>
-function moveNo() {
-  const noBtn = document.getElementById("no");
-  const x = Math.random() * 300 - 150;
-  const y = Math.random() * 200 - 100;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
 
-function yesClicked() {
-  // Show the background image
-  document.getElementById('bgImage').style.opacity = 1;
+    const noBtn = document.getElementById('no');
+    const popup = document.getElementById('popup');
+    const popupNo = document.getElementById('popupNo');
+    const popupYes = document.getElementById('popupYes');
 
-  // Change only the main content, keep the background div intact
-  document.getElementById('mainContent').innerHTML = `
-      <h1 id="text-clr">
-  Anjaneyudi balam.... anna maaata javadaatani laxmanudu..... ichina maata kosam sainyanni ventesukochina sugreevudu.... veelandarini ventesukuni seetha kosam antha dooram velladu raamudu...... Veellu yevaru lekapoina naa seetha kosam yentha dooram ina velthanu.....<br><br>
-  Please nuv naa seetha vi avuthava&nbsp;🤞....<br>
-  Happy Valentine’s Day 💐
-</h1>
+    /* FIRST PAGE NO BUTTON RUNS */
+    noBtn.addEventListener('mouseover', () => {
+        moveButton(noBtn);
+    });
 
+    /* CLICK YES → SHOW POPUP + HEARTS */
+    document.getElementById('yes').onclick = () => {
+        popup.style.display = "block";
+        startHearts();
+    };
 
-  `;
-}
+    /* POPUP NO BUTTON (REVERSE LOGIC) */
+    popupNo.addEventListener('mouseover', () => {
+        moveButton(popupNo);
+    });
+
+    /* FINAL YES */
+    popupYes.onclick = () => {
+        document.getElementById('mainText').style.display = "none";
+        document.getElementById('yes').style.display = "none";
+        document.getElementById('no').style.display = "none";
+        popup.style.display = "none";
+        document.getElementById('finalPage').style.display = "block";
+    };
+
+    /* FUNCTION TO MOVE BUTTON */
+    function moveButton(button) {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        button.style.position = "absolute";
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+    }
+
+    /* CREATE FLOATING HEARTS */
+    function startHearts() {
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "100vh";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+
+        }, 300);
+    }
+
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
