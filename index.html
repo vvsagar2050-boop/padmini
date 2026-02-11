@@ -122,7 +122,7 @@ body::before{
     font-size:clamp(18px,4vw,26px);
     line-height:2;
     text-align:left;
-    color:white;
+    color:black;
     font-weight:500;
     animation:fadeInLeft 1s ease forwards;
 }
@@ -130,15 +130,25 @@ body::before{
     font-weight:700;
 }
 
-/* FINAL PAGE MESSAGE */
 #finalMsg{
+    position:absolute;
+    bottom:160px;
+    left:5%;
+    font-size:clamp(16px,4vw,20px);
+    font-weight:bold;
+    color:black;
+}
+#noTextAfterHover{
     position:absolute;
     bottom:120px;
     left:5%;
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
-    color:white;
+    color:black;
+    display:none;
 }
+
+/* FINAL PAGE BUTTONS */
 #proposalBtns{
     position:absolute;
     bottom:40px;
@@ -152,7 +162,7 @@ body::before{
     color:white;         
 }
 
-/* HEART FLOAT */
+/* HEARTS */
 .heart{
     position:absolute;
     font-size:clamp(20px,5vw,28px);
@@ -180,6 +190,20 @@ body::before{
     display:none;
     overflow:hidden;
 }
+
+/* FLOWER ANIMATION INSIDE ALERT */
+.flower{
+    position:absolute;
+    font-size:20px;
+    color:red;
+    animation:fallFlower 2s linear forwards;
+}
+@keyframes fallFlower{
+    0%{transform:translateY(-20px) rotate(0deg);opacity:1;}
+    100%{transform:translateY(200px) rotate(360deg);opacity:0;}
+}
+
+/* ALERT BUTTON */
 #finalPopup button{
     margin-top:20px;
     padding:10px 20px;
@@ -190,17 +214,6 @@ body::before{
     background:#ff3366;
     color:white;
     font-weight:bold;
-}
-
-/* FIREWORK SPARKLES for final popup */
-.sparkle{
-    position:absolute;
-    font-size:20px;
-    animation:fallSparkle 2s ease-out forwards;
-}
-@keyframes fallSparkle{
-    0%{transform:translateY(0) rotate(0deg);opacity:1;}
-    100%{transform:translateY(200px) rotate(360deg);opacity:0;}
 }
 
 /* ANIMATIONS */
@@ -214,8 +227,7 @@ body::before{
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-    <h1>Padhu, Will You Be My Valentine? ❤️</h1><br>
-    <h3>Padhu Fistu NO click chey.....avvatledhaaa ithe....<h3>
+    <h1>Padhu, Will You Be My Valentine? ❤️</h1>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -243,6 +255,7 @@ body::before{
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
     <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇 Oppukokapothe neeku dammunte No click chey 😜</div>
+    <div id="noTextAfterHover">No click cheddam ante miss ipoyindha ithe......</div>
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
         <button id="reject" class="btn">No 😜</button>
@@ -262,6 +275,7 @@ const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const finalPopup=document.getElementById("finalPopup");
 const reject=document.getElementById("reject");
+const noTextAfterHover=document.getElementById("noTextAfterHover");
 
 // Hover buttons move
 function move(btn){
@@ -271,7 +285,11 @@ function move(btn){
 }
 document.getElementById("no1").onmouseover=document.getElementById("no1").ontouchstart=function(){move(this);}
 document.getElementById("yes2").onmouseover=document.getElementById("yes2").ontouchstart=function(){move(this);}
-reject.onmouseover=reject.ontouchstart=function(){move(this);}
+reject.onmouseover=reject.ontouchstart=function(){ 
+    move(this);
+    // Show text after no disappears
+    noTextAfterHover.style.display="block";
+}
 
 // PAGE TRANSITIONS
 document.getElementById("yes1").onclick=function(){
@@ -300,16 +318,17 @@ function hearts(){
 
 // FINAL PAGE YES
 document.getElementById("accept").onclick=function(){
-    for(let i=0;i<25;i++){
-        const fw=document.createElement("div");
-        fw.className="sparkle";
-        fw.innerHTML="✨";
-        fw.style.left=Math.random()*finalPopup.offsetWidth+"px";
-        fw.style.top="-20px";
-        finalPopup.appendChild(fw);
-        setTimeout(()=>fw.remove(),2000);
-    }
     showFinalPopup();
+    // create flowers animation inside popup
+    for(let i=0;i<50;i++){
+        const flower=document.createElement("div");
+        flower.className="flower";
+        flower.innerHTML="🌹";
+        flower.style.left=Math.random()*finalPopup.offsetWidth+"px";
+        flower.style.top="-20px";
+        finalPopup.appendChild(flower);
+        setTimeout(()=>flower.remove(),2000);
+    }
 }
 
 // FINAL ALERT FUNCTIONS
@@ -318,6 +337,3 @@ function closeFinalPopup(){finalPopup.style.display="none";}
 </script>
 </body>
 </html>
-
-
-
