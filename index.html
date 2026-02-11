@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ffe6ea; /* First page background color */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background 0.5s ease;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  h1 {
+    color: #e6005c;
+    z-index: 2;
+    position: relative;
+  }
+
+  .buttons {
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  #yes {
+    background: #ff4d88;
+    color: white;
+    margin-right: 20px;
+  }
+
+  #no {
+    background: #cccccc;
+    position: absolute;
+  }
+  #text-clr{
+    color:#FFFF00;
+    line-height:1.4;
+  }
+
+  /* Background image container for after Yes click */
+  #bgImage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/p2.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(5px);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+</style>
+</head>
+<body>
+
+<div id="mainContent">
+  <h1>Hloo Hai....Padhu 💕<br>Will you be my Valentine?</h1>
+  <h2> firstuu neeku istam ledhu kaaabatti No click chey <h2>
+  <div class="buttons">
+    <button id="yes" onclick="yesClicked()">Yes 💖</button>
+    <button id="no" onmouseover="moveNo()">No 😜</button>
+  </div>
+</div>
+
+<!-- Background image div -->
+<div id="bgImage"></div>
+
+<script>
+function moveNo() {
+  const noBtn = document.getElementById("no");
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function yesClicked() {
+  // Show the background image
+  document.getElementById('bgImage').style.opacity = 1;
+
+  // Change only the main content, keep the background div intact
+  document.getElementById('mainContent').innerHTML = `
+      <h1 id="text-clr">
+  Anjaneyudi balam.... anna maaata javadaatani laxmanudu..... ichina maata kosam sainyanni ventesukochina sugreevudu.... veelandarini ventesukuni seetha kosam antha dooram velladu raamudu...... Veellu yevaru lekapoina naa seetha kosam yentha dooram ina velthanu.....<br><br>
+  Please nuv naa seetha vi avuthava&nbsp;🤞....<br>
+  Happy Valentine’s Day 💐
+</h1>
+
+
+  `;
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
