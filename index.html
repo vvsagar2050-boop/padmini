@@ -2,368 +2,83 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Padhu ❤️</title>
+<title>No Hover Demo</title>
 <style>
 body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
     overflow:hidden;
     height:100vh;
-}
-
-/* BACKGROUND IMAGE */
-body::before{
-    content:'';
-    position:fixed;
-    top:0; left:0;
-    width:100%;
-    height:100%;
-    background-image:url('img/p6.jpg');
-    background-size:cover;
-    background-position:center;
-    z-index:-2;
-}
-
-/* BLUR LAYER for PAGE1 & PAGE2 */
-.blur-overlay{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.3);
-    backdrop-filter:blur(8px);
-    z-index:-1;
-}
-
-/* PAGES */
-.page{
-    position:absolute;
-    width:100%;
-    height:100%;
+    background:#222;
     display:flex;
     justify-content:center;
     align-items:center;
+    color:white;
     flex-direction:column;
-    text-align:center;
-    padding:20px;
-    box-sizing:border-box;
-    transition:opacity 0.5s ease;
-}
-.hidden{
-    opacity:0;
-    pointer-events:none;
 }
 
-/* PAGE 1 */
-#page1 h1{
-    font-size:clamp(26px,6vw,46px);
-    margin-bottom:30px;
-    text-shadow:0 0 20px #ff4da6;
-}
-
-/* BUTTONS */
+/* Buttons */
 .btn{
     padding:12px 25px;
-    font-size:clamp(14px,4vw,18px);
+    font-size:18px;
     border:none;
     border-radius:8px;
     cursor:pointer;
     margin:10px;
 }
 
-/* PAGE 1 BUTTONS */
-#yes1{background:#ff3366;color:white;}
-#no1{background:black;color:white;}
-
-/* PAGE 2 */
-#page2 .card{
-    backdrop-filter:blur(10px);
-    background:rgba(255,255,255,0.1);
-    padding:40px 30px;
-    border-radius:20px;
-    box-shadow:0 0 40px rgba(255,255,255,0.2);
-    width:90%;
-    max-width:400px;
-    text-align:center;
-    animation:fadeIn 1s ease forwards;
-}
-#page2 h2{
-    font-size:clamp(20px,4vw,28px);
-    margin-bottom:20px;
-}
-#page2 p{
-    font-size:clamp(14px,3vw,18px);
-    margin-bottom:20px;
-}
-
-/* BUTTONS PAGE 2 */
-#yes2{background:#ff3366;color:white;position:relative;}
-#no2{background:black;color:white;position:relative;}
-
-/* PAGE 3 */
-#page3{
-    position:relative;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-}
-#page3 img{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-1;
-}
-#finalText{
-    position:absolute;
-    top:5%;
-    left:5%;
-    width:90%;
-    max-width:700px;
-    font-size:clamp(18px,4vw,26px);
-    line-height:2;
-    text-align:left;
-    color:white;
-    font-weight:500;
-    animation:fadeInLeft 1s ease forwards;
-}
-#finalText strong{
-    font-weight:700;
-}
-
-#finalMsg{
-    position:absolute;
-    bottom:160px;
-    left:5%;
-    font-size:clamp(16px,4vw,20px);
-    font-weight:bold;
+#no{
+    background:black;
     color:white;
 }
+
+#yes{
+    background:#ff3366;
+    color:white;
+}
+
+/* Text that appears after hover */
 #noTextAfterHover{
-    position:absolute;
-    bottom:120px;
-    left:5%;
-    font-size:clamp(16px,4vw,20px);
-    font-weight:bold;
-    color:white;
-    display:none;
-}
-
-/* YES TOP RIGHT TEXT */
-#yesTextTopRight{
-    position:absolute;
-    top:20px;
-    right:20px;
-    font-size:clamp(14px,3vw,18px);
-    font-weight:bold;
-    color:white;
-    background:#ff3366;
-    padding:10px 15px;
-    border-radius:10px;
-    cursor:pointer;
-    display:none;
-}
-
-/* FINAL PAGE BUTTONS */
-#proposalBtns{
-    position:absolute;
-    bottom:40px;
-    left:5%;
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-}
-#proposalBtns .btn{
-    background:#ff3366; 
-    color:white;         
-}
-
-/* HEARTS */
-.heart{
-    position:absolute;
-    font-size:clamp(20px,5vw,28px);
-    animation:float 3s linear forwards;
-}
-@keyframes float{
-    0%{transform:translateY(0);opacity:1;}
-    100%{transform:translateY(-300px);opacity:0;}
-}
-
-/* FINAL CUSTOM ALERT */
-#finalPopup{
-    position:fixed;
-    top:10%;
-    left:50%;
-    transform:translateX(-50%);
-    background:white;
-    color:black;
-    padding:30px 25px;
-    border-radius:20px;
-    text-align:center;
-    font-size:18px;
-    box-shadow:0 0 30px rgba(0,0,0,0.5);
-    z-index:9999;
-    display:none;
-    overflow:hidden;
-}
-
-/* ALERT HEART ANIMATION INSIDE ALERT */
-#finalPopup .heart{
-    position:absolute;
-    font-size:20px;
-    animation:floatAlert 2s linear forwards;
-}
-@keyframes floatAlert{
-    0%{transform:translateY(0) scale(0.8);opacity:1;}
-    100%{transform:translateY(150px) scale(1.5);opacity:0;}
-}
-
-/* ALERT BUTTON */
-#finalPopup button{
     margin-top:20px;
-    padding:10px 20px;
-    font-size:16px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    background:#ff3366;
-    color:white;
-    font-weight:bold;
+    font-size:18px;
+    color:#ff3366;
+    display:none;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes fadeInLeft{from{opacity:0; transform:translateX(-50px);}to{opacity:1; transform:translateX(0);}}
-
-
+/* Random move animation */
+@keyframes floatAway {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(50px,-50px); }
+}
 </style>
 </head>
 <body>
 
-<div class="blur-overlay"></div>
+<h1>Padhu, Will You Be My Valentine? ❤️</h1>
 
-<!-- PAGE 1 -->
-<div id="page1" class="page">
-    <h1>Padhu, Will You Be My Valentine? ❤️</h1>
-    <h3>Hlooo Padhu...Firstu No click chey.....avvatledhaa ithe..</h3>
-    <div>
-        <button id="yes1" class="btn">Yes 💖</button>
-        <button id="no1" class="btn">No 😜</button>
-    </div>
+<div>
+    <button id="yes" class="btn">Yes 💖</button>
+    <button id="no" class="btn">No 😜</button>
 </div>
 
-<!-- PAGE 2 -->
-<div id="page2" class="page hidden">
-    <div class="card">
-        <h2>Try Your Luck 😏</h2>
-        <p>The buttons like to run away… Catch the right one! 😜</p>
-        <button id="yes2" class="btn">Yes 😍</button>
-        <button id="no2" class="btn">No 🙈</button>
-    </div>
-</div>
-
-<!-- PAGE 3 -->
-<div id="page3" class="page hidden">
-    <img src="img/p6.jpg" alt="Love Image">
-    <div id="finalText">
-        Anjaneyudi balam🔥💪... <strong>Anna maata javadaatani Lakshmanudu⚔️...</strong>
-        Ichina maata kosam <strong>sainyanni ventesukochina Sugreevudu🛡️🐒...</strong>
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
-        <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
-    </div>
-    <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇 Oppukokapothe neeku dammunte No click chey 😜</div>
-    <div id="noTextAfterHover">No click cheddam ante miss ipoyindha ithe......</div>
-    <div id="yesTextTopRight">yenti Yes kuda miss ipoyindhaaa okkasari top right corner lo chudu kanipistaadhi</div>
-    <div id="proposalBtns">
-        <button id="accept" class="btn">Yes 💍</button>
-        <button id="reject" class="btn">No 😜</button>
-    </div>
-</div>
-
-<!-- FINAL ALERT -->
-<div id="finalPopup">
-    <h2>Padhu said YES! 💖🔥</h2>
-    <p>Thank you Padhu Navvinandhu 🙏✨</p>
-    <button onclick="closeFinalPopup()">Close</button>
-</div>
+<div id="noTextAfterHover">No click cheddam ante miss ipoyindha ithe......</div>
 
 <script>
-const page1=document.getElementById("page1");
-const page2=document.getElementById("page2");
-const page3=document.getElementById("page3");
-const finalPopup=document.getElementById("finalPopup");
-const reject=document.getElementById("reject");
-const accept=document.getElementById("accept");
-const noTextAfterHover=document.getElementById("noTextAfterHover");
-const yesTextTopRight=document.getElementById("yesTextTopRight");
+// Move No button randomly
+const noBtn = document.getElementById("no");
+const noText = document.getElementById("noTextAfterHover");
 
-let noDisappeared = false; // track if No has disappeared
-
-// Hover buttons move
-function move(btn){
+function moveNo(btn){
     btn.style.position="absolute";
-    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
-    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
-}
-document.getElementById("no1").onmouseover=document.getElementById("no1").ontouchstart=function(){move(this);}
-document.getElementById("yes2").onmouseover=document.getElementById("yes2").ontouchstart=function(){move(this);}
-
-// Last page No hover
-reject.onmouseover = reject.ontouchstart = function(){ 
-    move(this);
-    noTextAfterHover.style.display = "block";
-    noDisappeared = true;
+    btn.style.left = Math.random() * (window.innerWidth - btn.offsetWidth) + "px";
+    btn.style.top = Math.random() * (window.innerHeight - btn.offsetHeight) + "px";
+    noText.style.display = "block"; // Show the text after first hover
 }
 
-// Last page Yes hover - only works after No disappeared
-accept.onmouseover = accept.ontouchstart = function(){
-    if(!noDisappeared) return; // do nothing if No hasn't disappeared yet
-    accept.style.display = "none";
-    yesTextTopRight.style.display = "block";
-}
-
-// Top right text click triggers alert
-yesTextTopRight.onclick = function(){
-    showFinalPopup();
-    // hearts falling inside popup
-    for(let i=0;i<50;i++){
-        const heart=document.createElement("div");
-        heart.className="heart";
-        heart.style.left=Math.random()*finalPopup.offsetWidth+"px";
-        heart.style.top="0px";
-        finalPopup.appendChild(heart);
-        setTimeout(()=>heart.remove(),2000);
-    }
-}
-
-// PAGE TRANSITIONS
-document.getElementById("yes1").onclick=function(){
-    page1.classList.add("hidden");
-    page2.classList.remove("hidden");
-}
-
-document.getElementById("no2").onclick=function(){
-    page2.classList.add("hidden");
-    page3.classList.remove("hidden");
-    hearts();
-}
-
-// HEARTS ANIMATION
-function hearts(){
-    setInterval(()=>{
-        const heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.top=window.innerHeight+"px";
-        page3.appendChild(heart);
-        setTimeout(()=>heart.remove(),3000);
-    },300);
-}
-
-// FINAL ALERT FUNCTIONS
-function showFinalPopup(){finalPopup.style.display="block";}
-function closeFinalPopup(){finalPopup.style.display="none";}
+noBtn.onmouseover = noBtn.ontouchstart = function() {
+    moveNo(noBtn);
+};
 </script>
+
 </body>
 </html>
