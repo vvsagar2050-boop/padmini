@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Seetha ❤️</title>
-
+<title>For Padhu ❤️</title>
 <style>
 /* BASE */
 body{
@@ -14,7 +13,7 @@ body{
     height:100vh;
 }
 
-/* FULL SCREEN BACKGROUND */
+/* BACKGROUND IMAGE */
 body::before{
     content:'';
     position:fixed;
@@ -27,15 +26,17 @@ body::before{
     z-index:-2;
 }
 
-.overlay{
+/* BLUR LAYER */
+.blur-overlay{
     position:fixed;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.3);
+    backdrop-filter:blur(8px);
     z-index:-1;
 }
 
-/* PAGE STYLING */
+/* PAGES */
 .page{
     position:absolute;
     width:100%;
@@ -49,15 +50,9 @@ body::before{
     box-sizing:border-box;
     transition:opacity 0.5s ease;
 }
-
 .hidden{
     opacity:0;
     pointer-events:none;
-}
-
-/* BLURRED BACKGROUND FOR PAGE 1 & 2 */
-.blur-bg{
-    filter:blur(10px);
 }
 
 /* PAGE 1 */
@@ -76,40 +71,47 @@ body::before{
     cursor:pointer;
     margin:10px;
 }
-
 #yes1{background:#ff3366;color:white;}
-#no1{background:black;color:white;position:relative;}
+#no1{background:black;color:white;}
 
-#yes2{background:#ff3366;color:white;position:relative;}
-#no2{background:black;color:white;position:relative;}
-
-#accept{background:#ff3366;color:white;}
-#reject{background:black;color:white;position:relative;}
-
-/* GLASS CARD */
-.glass{
-    backdrop-filter:blur(15px);
+/* PAGE 2 */
+#page2 .card{
+    backdrop-filter:blur(10px);
     background:rgba(255,255,255,0.1);
-    padding:40px 25px;
+    padding:40px 30px;
     border-radius:20px;
     box-shadow:0 0 40px rgba(255,255,255,0.2);
     width:90%;
     max-width:400px;
+    text-align:center;
 }
-
-.glass h2{
-    font-size:clamp(22px,4vw,30px);
+#page2 h2{
+    font-size:clamp(20px,4vw,28px);
+    margin-bottom:20px;
+}
+#page2 p{
+    font-size:clamp(14px,3vw,18px);
     margin-bottom:20px;
 }
 
-/* FINAL PAGE */
+/* BUTTONS PAGE 2 */
+#yes2{background:#ff3366;color:white;position:relative;}
+#no2{background:black;color:white;position:relative;}
+
+/* PAGE 3 */
 #page3{
     position:relative;
     width:100%;
     height:100vh;
     overflow:hidden;
 }
-
+#page3 img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
 #finalText{
     position:absolute;
     top:5%;
@@ -119,9 +121,8 @@ body::before{
     font-size:clamp(16px,4vw,22px);
     line-height:1.7;
     text-align:left;
-    text-shadow: 2px 2px 10px black;
+    text-shadow:2px 2px 10px black;
 }
-
 #finalMsg{
     position:absolute;
     bottom:120px;
@@ -129,8 +130,6 @@ body::before{
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
 }
-
-/* FINAL BUTTONS */
 #proposalBtns{
     position:absolute;
     bottom:40px;
@@ -179,7 +178,6 @@ body::before{
     display:none;
     overflow:hidden;
 }
-
 #finalPopup button{
     margin-top:20px;
     padding:10px 20px;
@@ -202,15 +200,16 @@ body::before{
     0%{transform:translateY(-30px);opacity:1;}
     100%{transform:translateY(200px) rotate(360deg);opacity:0;}
 }
+
 </style>
 </head>
-
 <body>
 
-<audio id="music" src="music/love.mp3" loop></audio>
+<!-- BLUR OVERLAY -->
+<div class="blur-overlay"></div>
 
 <!-- PAGE 1 -->
-<div id="page1" class="page blur-bg">
+<div id="page1" class="page">
     <h1>Padhu, Will You Be My Valentine? ❤️</h1>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
@@ -219,10 +218,10 @@ body::before{
 </div>
 
 <!-- PAGE 2 -->
-<div id="page2" class="page hidden blur-bg">
-    <div class="glass">
-        <h2>Kidding Time! 😜💖</h2>
-        <p>Can you catch the buttons? Try to click Yes or No!</p>
+<div id="page2" class="page hidden">
+    <div class="card">
+        <h2>Oops! Buttons are tricky 😜</h2>
+        <p>Try to click the right one! 😏</p>
         <button id="yes2" class="btn">Yes 😍</button>
         <button id="no2" class="btn">No 🙈</button>
     </div>
@@ -230,11 +229,12 @@ body::before{
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
+    <img src="img/p6.jpg" alt="Love Image">
     <div id="finalText">
         Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...<br>
         Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...<br>
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...<br>
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....<br><br>
+        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...<br><br>
+        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍.....<br>
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
     <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇<br>Oppukokapothe neeku dammunte No click chey 😜</div>
@@ -244,7 +244,7 @@ body::before{
     </div>
 </div>
 
-<!-- FINAL CUSTOM POPUP -->
+<!-- FINAL ALERT -->
 <div id="finalPopup">
     <h2>Padhu said YES! 💖🔥</h2>
     <p>Thank you Padhu Navvinandhu 🙏✨</p>
@@ -255,39 +255,33 @@ body::before{
 const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
-const music=document.getElementById("music");
 const finalPopup=document.getElementById("finalPopup");
 const reject=document.getElementById("reject");
 
-// Move button function
+// Hover buttons move
 function move(btn){
     btn.style.position="absolute";
     btn.style.left=Math.random()*(window.innerWidth-100)+"px";
     btn.style.top=Math.random()*(window.innerHeight-50)+"px";
 }
 
-// Hover buttons run away
-document.getElementById("no1").ontouchstart=
-document.getElementById("no1").onmouseover=function(){move(this);}
-document.getElementById("yes2").ontouchstart=
-document.getElementById("yes2").onmouseover=function(){move(this);}
-reject.ontouchstart=reject.onmouseover=function(){move(this);}
+document.getElementById("no1").onmouseover=document.getElementById("no1").ontouchstart=function(){move(this);}
+document.getElementById("yes2").onmouseover=document.getElementById("yes2").ontouchstart=function(){move(this);}
+reject.onmouseover=reject.ontouchstart=function(){move(this);}
 
-// PAGE 1 → PAGE 2
+// PAGE TRANSITIONS
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
 }
 
-// PAGE 2 → PAGE 3
 document.getElementById("no2").onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
-    music.play();
     hearts();
 }
 
-// FINAL PAGE HEARTS
+// HEARTS ANIMATION
 function hearts(){
     setInterval(()=>{
         const heart=document.createElement("div");
@@ -300,7 +294,7 @@ function hearts(){
     },300);
 }
 
-// FINAL PAGE YES → SHOW CUSTOM ALERT + FLOWERS
+// FINAL PAGE YES
 document.getElementById("accept").onclick=function(){
     for(let i=0;i<25;i++){
         const fw=document.createElement("div");
@@ -315,15 +309,11 @@ document.getElementById("accept").onclick=function(){
     flowers();
 }
 
-// SHOW / HIDE FINAL POPUP
-function showFinalPopup(){
-    finalPopup.style.display="block";
-}
-function closeFinalPopup(){
-    finalPopup.style.display="none";
-}
+// FINAL ALERT FUNCTIONS
+function showFinalPopup(){finalPopup.style.display="block";}
+function closeFinalPopup(){finalPopup.style.display="none";}
 
-// RED FLOWERS ANIMATION
+// FLOWERS ANIMATION
 function flowers(){
     for(let i=0;i<50;i++){
         const f=document.createElement("div");
@@ -336,6 +326,5 @@ function flowers(){
     }
 }
 </script>
-
 </body>
 </html>
