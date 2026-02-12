@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Padhu ❤️</title>
+
 <style>
 body{
     margin:0;
@@ -11,7 +12,7 @@ body{
     height:100vh;
 }
 
-/* BACKGROUND IMAGE */
+/* BACKGROUND */
 body::before{
     content:'';
     position:fixed;
@@ -24,7 +25,6 @@ body::before{
     z-index:-2;
 }
 
-/* BLUR LAYER */
 .blur-overlay{
     position:fixed;
     width:100%;
@@ -34,7 +34,7 @@ body::before{
     z-index:-1;
 }
 
-/* PAGES */
+/* PAGE COMMON */
 .page{
     position:absolute;
     width:100%;
@@ -60,7 +60,6 @@ body::before{
     text-shadow:0 0 20px #ff4da6;
 }
 
-/* BUTTONS */
 .btn{
     padding:12px 25px;
     font-size:clamp(14px,4vw,18px);
@@ -71,17 +70,21 @@ body::before{
 }
 
 #yes1{background:#ff3366;color:white;}
-#no1{background:black;color:white;}
+#no1{background:black;color:white;position:relative;}
 
-/* NEW PAGE 2 */
+/* PAGE 2 */
 #page2 h2{
     font-size:clamp(18px,4vw,26px);
-    color:white;
+    color:black;
     max-width:600px;
 }
 #okBtn{
     background:#ff3366;
     color:white;
+}
+#okBtn:disabled{
+    background:gray;
+    cursor:not-allowed;
 }
 
 /* PAGE 3 */
@@ -110,17 +113,22 @@ body::before{
     font-weight:500;
     animation:fadeInLeft 1s ease forwards;
 }
-#finalText strong{
-    font-weight:700;
-}
-
 #finalMsg{
     position:absolute;
-    bottom:160px;
+    bottom:180px;
     left:5%;
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
     color:white;
+}
+#noHoverText{
+    position:absolute;
+    bottom:140px;
+    left:5%;
+    font-size:clamp(16px,4vw,20px);
+    font-weight:bold;
+    color:white;
+    display:none;
 }
 
 #proposalBtns{
@@ -132,7 +140,10 @@ body::before{
 }
 #proposalBtns .btn{
     background:#ff3366;
-    color:white;        
+    color:white;
+}
+#reject{
+    background:black !important;
 }
 
 /* HEARTS */
@@ -146,54 +157,52 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* FINAL ALERT */
+/* ALERT */
 #finalPopup{
     position:fixed;
     top:8%;
     left:50%;
     transform:translateX(-50%);
-    background:white;
-    color:black;
     padding:30px 25px;
     border-radius:20px;
     text-align:left;
     font-size:16px;
-    box-shadow:0 0 30px rgba(0,0,0,0.5);
     z-index:9999;
     display:none;
-    overflow:hidden;
     width:90%;
     max-width:420px;
-}
 
-/* ROSES INSIDE ALERT */
-.flower{
-    position:absolute;
-    font-size:20px;
-    animation:fallFlower 2s linear forwards;
-}
-@keyframes fallFlower{
-    0%{transform:translateY(-20px) rotate(0deg);opacity:1;}
-    100%{transform:translateY(220px) rotate(360deg);opacity:0;}
+    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    color:white;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 30px rgba(0,0,0,0.6);
+    overflow:hidden;
 }
 
 #finalPopup button{
     margin-top:20px;
     padding:10px 20px;
-    font-size:16px;
     border:none;
     border-radius:8px;
-    cursor:pointer;
-    background:#ff3366;
-    color:white;
+    background:white;
+    color:#d62976;
     font-weight:bold;
+    cursor:pointer;
 }
 
-/* MOBILE FIX */
+/* EMOJI BLAST */
+.blast{
+    position:absolute;
+    font-size:22px;
+    animation:fall 2s linear forwards;
+}
+@keyframes fall{
+    0%{transform:translateY(-20px);opacity:1;}
+    100%{transform:translateY(220px);opacity:0;}
+}
+
 @media(max-width:768px){
-    #finalText{
-        width:90%;
-    }
+    #finalText{width:90%;}
 }
 
 @keyframes fadeInLeft{
@@ -202,6 +211,7 @@ to{opacity:1; transform:translateX(0);}
 }
 </style>
 </head>
+
 <body>
 
 <div class="blur-overlay"></div>
@@ -215,39 +225,52 @@ to{opacity:1; transform:translateX(0);}
     </div>
 </div>
 
-<!-- NEW PAGE 2 -->
+<!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
         hloo kangaru avvaku naalo unna vibrations valla phone vibrate avuthundhi...
         chusindhi chalu okay kottu 😜
     </h2>
-    <button id="okBtn" class="btn">OK 😌</button>
+    <button id="okBtn" class="btn" disabled>OK 😌</button>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
     <img src="img/p6.jpg">
+
     <div id="finalText">
-        Anjaneyudi balam🔥💪... <strong>Anna maata javadaatani Lakshmanudu⚔️...</strong>
-        Ichina maata kosam <strong>sainyanni ventesukochina Sugreevudu🛡️🐒...</strong>
+        Anjaneyudi balam🔥💪...
+        Anna maata javadaatani Lakshmanudu⚔️...
+        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
         Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
         naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
-    <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇</div>
+
+    <div id="finalMsg">
+        Please Padhu oppukovachu kadaa.. 😇 
+        okay oppukokapothe dammunte NO click Chey chuddam 😜
+    </div>
+
+    <div id="noHoverText">
+        Yenti No click cheddam ante button miss ipoyindhaaa...
+        inka verey option am ledhu chachinattu....
+    </div>
+
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
+        <button id="reject" class="btn">No 😜</button>
     </div>
 </div>
 
-<!-- FINAL ALERT -->
+<!-- ALERT -->
 <div id="finalPopup">
     <h3>Padhu said YES! 💖🔥</h3>
     <p>
-    Vijju : yenti padhu navvuthunnavaa?... <br><br>
-    Padhu : haa konchem..... <br><br>
-    Vijju : yenti blush kuda avuthunattu unnav??.... <br><br>
-    Padhu : aha ledhu andi.... <br><br>
+    Vijju : yenti padhu navvuthunnavaa?...<br><br>
+    Padhu : haa konchem.....<br><br>
+    Vijju : yenti blush kuda avuthunattu unnav??....<br><br>
+    Padhu : aha ledhu andi....<br><br>
     Vijju : final ga inkaa yekkuva gaa love you....
     Boledenni chocolettulu.... Chaalaa giftulu....
     And padhu ki ive maa mudhuluu.... 💋💋
@@ -260,8 +283,20 @@ const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const finalPopup=document.getElementById("finalPopup");
+const okBtn=document.getElementById("okBtn");
+const reject=document.getElementById("reject");
+const noHoverText=document.getElementById("noHoverText");
 
-/* PAGE 1 YES */
+/* PAGE1 NO RUN */
+function move(btn){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
+    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+}
+document.getElementById("no1").onmouseover=
+document.getElementById("no1").ontouchstart=function(){move(this);}
+
+/* PAGE1 YES */
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
@@ -269,16 +304,26 @@ document.getElementById("yes1").onclick=function(){
     if(navigator.vibrate){
         navigator.vibrate(5000);
     }
+
+    setTimeout(()=>{
+        okBtn.disabled=false;
+    },5000);
 }
 
-/* PAGE 2 OK */
-document.getElementById("okBtn").onclick=function(){
+/* PAGE2 OK */
+okBtn.onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
     hearts();
 }
 
-/* HEARTS PAGE 3 */
+/* PAGE3 NO */
+reject.onmouseover=reject.ontouchstart=function(){
+    this.style.display="none";
+    noHoverText.style.display="block";
+}
+
+/* HEARTS */
 function hearts(){
     setInterval(()=>{
         const heart=document.createElement("div");
@@ -291,28 +336,25 @@ function hearts(){
     },300);
 }
 
-/* FINAL YES */
+/* ALERT */
 document.getElementById("accept").onclick=function(){
-    showFinalPopup();
-    for(let i=0;i<40;i++){
-        const flower=document.createElement("div");
-        flower.className="flower";
-        flower.innerHTML="🌹";
-        flower.style.left=Math.random()*finalPopup.offsetWidth+"px";
-        flower.style.top="-20px";
-        finalPopup.appendChild(flower);
-        setTimeout(()=>flower.remove(),2000);
-    }
-}
-
-function showFinalPopup(){
     finalPopup.style.display="block";
+
+    for(let i=0;i<40;i++){
+        const emoji=document.createElement("div");
+        emoji.className="blast";
+        emoji.innerHTML=["🌹","💖","✨"][Math.floor(Math.random()*3)];
+        emoji.style.left=Math.random()*finalPopup.offsetWidth+"px";
+        finalPopup.appendChild(emoji);
+        setTimeout(()=>emoji.remove(),2000);
+    }
 }
 
 function closeFinalPopup(){
     finalPopup.style.display="none";
-    document.querySelectorAll(".flower").forEach(f=>f.remove());
+    document.querySelectorAll(".blast").forEach(e=>e.remove());
 }
 </script>
+
 </body>
 </html>
