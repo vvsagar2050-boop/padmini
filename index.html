@@ -102,11 +102,12 @@ body::before{
     z-index:-1;
 }
 
-/* Blur when popup active */
+/* Blur class */
 .blur-page3{
     filter:blur(8px);
 }
 
+/* FINAL TEXT */
 #finalText{
     position:absolute;
     top:5%;
@@ -120,9 +121,16 @@ body::before{
     animation:fadeInLeft 1s ease forwards;
 }
 
+/* Added proper spacing */
+#finalText strong{
+    display:block;
+    margin-top:25px;
+}
+
+/* BELOW MESSAGE */
 #finalMsg{
     position:absolute;
-    bottom:200px;
+    bottom:170px;
     left:5%;
     width:45%;
     font-size:clamp(16px,4vw,20px);
@@ -130,9 +138,10 @@ body::before{
     color:white;
 }
 
+/* NO HOVER TEXT */
 #noHoverText{
     position:absolute;
-    bottom:150px;
+    bottom:120px;
     left:5%;
     width:45%;
     font-size:clamp(16px,4vw,20px);
@@ -141,12 +150,13 @@ body::before{
     display:none;
 }
 
+/* BUTTONS */
 #proposalBtns{
     position:absolute;
     bottom:40px;
     left:5%;
     display:flex;
-    gap:15px;
+    gap:8px; /* reduced gap */
 }
 #proposalBtns .btn{
     background:#ff3366;
@@ -167,10 +177,10 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* ALERT BLACK THEME */
+/* ALERT BLACK THEME (moved 10px down) */
 #finalPopup{
     position:fixed;
-    top:8%;
+    top:18%; /* moved down */
     left:50%;
     transform:translateX(-50%);
     padding:30px 25px;
@@ -199,13 +209,27 @@ body::before{
     cursor:pointer;
 }
 
-/* Emoji blast inside alert */
+/* HAPPY MESSAGE */
+#happyMessage{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:clamp(28px,6vw,50px);
+    color:white;
+    text-align:center;
+    display:none;
+    z-index:9998;
+    font-weight:bold;
+    text-shadow:0 0 20px #ff3366;
+}
+
+/* Emoji blast */
 .blast{
     position:absolute;
     font-size:22px;
     animation:fall 2s linear forwards;
 }
-
 @keyframes fall{
     0%{transform:translateY(-20px);opacity:1;}
     100%{transform:translateY(220px);opacity:0;}
@@ -214,8 +238,8 @@ body::before{
 /* Mobile Fix */
 @media(max-width:768px){
     #finalText{width:90%;}
-    #finalMsg{width:90%; bottom:230px;}
-    #noHoverText{width:90%; bottom:180px;}
+    #finalMsg{width:90%; bottom:200px;}
+    #noHoverText{width:90%; bottom:150px;}
 }
 
 @keyframes fadeInLeft{
@@ -255,8 +279,8 @@ to{opacity:1; transform:translateX(0);}
         Anjaneyudi balam🔥💪...<br>
         Lakshmanudu⚔️...<br>
         Sugreevudu🛡️🐒...<br>
-        Veellandarini thisukuni Seetha kosam velladu Raamudu🏹...<br>
-        naku veellu lekapoina naa Seetha kosam💖 yentha dooramina velthanu🌍...<br><br>
+        Raamudu🏹...<br>
+        naku veellu lekapoina naa Seetha kosam💖 velthanu🌍...
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
 
@@ -274,20 +298,22 @@ to{opacity:1; transform:translateX(0);}
         <button id="accept" class="btn">Yes 💍</button>
         <button id="reject" class="btn">No 😜</button>
     </div>
+
+    <div id="happyMessage">
+        ❤️🌹 Happy Valentine’s Day Padhu 🌹❤️<br>
+        💖 Forever Mine 💖
+    </div>
 </div>
 
 <!-- ALERT -->
 <div id="finalPopup">
     <h3>💖 Padhu said YES! 💖</h3>
     <p>
-    😊 Vijju : yenti padhu navvuthunnavaa?...<br><br>
+    😊 Vijju : navvuthunnavaa?...<br><br>
     🙈 Padhu : haa konchem.....<br><br>
-    😏 Vijju : yenti blush kuda avuthunattu unnav??....<br><br>
+    😏 Vijju : blush avuthunnava??....<br><br>
     🤭 Padhu : aha ledhu andi....<br><br>
-    ❤️ Vijju : final ga inkaa yekkuva gaa love you...<br>
-    🍫 Boledenni chocolates...<br>
-    🎁 Chaalaa giftulu...<br>
-    💋 Ivi maa mudhuluu... 💋💋
+    ❤️ Love you sooo much... 🍫🎁💋
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -300,6 +326,7 @@ const finalPopup=document.getElementById("finalPopup");
 const okBtn=document.getElementById("okBtn");
 const reject=document.getElementById("reject");
 const noHoverText=document.getElementById("noHoverText");
+const happyMessage=document.getElementById("happyMessage");
 
 /* PAGE1 NO RUN */
 function move(btn){
@@ -314,11 +341,7 @@ document.getElementById("no1").ontouchstart=function(){move(this);}
 document.getElementById("yes1").onclick=function(){
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
-
-    if(navigator.vibrate){
-        navigator.vibrate(5000);
-    }
-
+    if(navigator.vibrate){ navigator.vibrate(5000); }
     setTimeout(()=>{ okBtn.disabled=false; },5000);
 }
 
@@ -348,12 +371,12 @@ function hearts(){
     },300);
 }
 
-/* ACCEPT BUTTON */
+/* ACCEPT */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
     page3.classList.add("blur-page3");
 
-    for(let i=0;i<35;i++){
+    for(let i=0;i<30;i++){
         const emoji=document.createElement("div");
         emoji.className="blast";
         emoji.innerHTML=["🌹","💖","✨","😍"][Math.floor(Math.random()*4)];
@@ -363,9 +386,20 @@ document.getElementById("accept").onclick=function(){
     }
 }
 
+/* CLOSE */
 function closeFinalPopup(){
     finalPopup.style.display="none";
-    page3.classList.remove("blur-page3");
+
+    // Hide all proposal content
+    document.getElementById("finalText").style.display="none";
+    document.getElementById("finalMsg").style.display="none";
+    document.getElementById("proposalBtns").style.display="none";
+    noHoverText.style.display="none";
+
+    // Keep blur and show Happy message
+    page3.classList.add("blur-page3");
+    happyMessage.style.display="block";
+
     document.querySelectorAll(".blast").forEach(e=>e.remove());
 }
 </script>
