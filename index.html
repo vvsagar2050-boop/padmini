@@ -53,7 +53,7 @@ body::before{
     pointer-events:none;
 }
 
-/* PAGE BLUR (WHEN ALERT OPEN) */
+/* BLUR PAGE WHEN ALERT OPEN */
 .blur-page{
     filter:blur(8px);
 }
@@ -64,12 +64,10 @@ body::before{
     margin-bottom:20px;
     text-shadow:0 0 20px #ff4da6;
 }
-
 #page1 h2{
     font-size:clamp(16px,4vw,22px);
     margin-bottom:30px;
 }
-
 #page1 .btn{
     margin:15px;
 }
@@ -81,7 +79,6 @@ body::before{
     border-radius:8px;
     cursor:pointer;
 }
-
 #yes1{background:#ff3366;color:white;}
 #no1{background:black;color:white;position:relative;}
 
@@ -92,7 +89,6 @@ body::before{
     max-width:700px;
     text-shadow:0 0 10px red;
 }
-
 #okBtn{
     background:#ff3366;
     color:white;
@@ -115,6 +111,14 @@ body::before{
     height:100%;
     object-fit:cover;
     z-index:-1;
+}
+
+/* LITTLE BLACK BLUR BACKGROUND FOR TEXT */
+#finalText, #finalMsg, #noTextAfterHover{
+    background:rgba(0,0,0,0.35);
+    padding:15px;
+    border-radius:15px;
+    backdrop-filter:blur(4px);
 }
 
 /* MAIN TEXT */
@@ -180,6 +184,17 @@ body::before{
 @keyframes float{
     0%{transform:translateY(0);opacity:1;}
     100%{transform:translateY(-300px);opacity:0;}
+}
+
+/* CONFETTI / ROSES */
+.confetti{
+    position:absolute;
+    font-size:22px;
+    animation:fall 3s linear forwards;
+}
+@keyframes fall{
+    0%{transform:translateY(-50px) rotate(0deg);}
+    100%{transform:translateY(100vh) rotate(360deg);}
 }
 
 /* ALERT */
@@ -301,7 +316,9 @@ body::before{
     <p>
     😏 Vijju : yenti blusing movement ahh?...<br><br>
     🙈 Padhu : aha alaa am ledhu andi...<br><br>
-    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....
+    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
+    😊 Padhu : Haa andi Konchem.....<br><br>
+    ❤️ Vijju : padhu ki inkaaa yekkuvaga & chaala chaala love you.. boledenni chocolattulu.... and padhu ki ivee maa mudhulu.... 💋💋💋🍫🌹
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -359,10 +376,24 @@ function hearts(){
     },300);
 }
 
+/* CONFETTI + ROSES */
+function celebration(){
+    for(let i=0;i<30;i++){
+        const conf=document.createElement("div");
+        conf.className="confetti";
+        conf.innerHTML=Math.random()>0.5?"🎉":"🌹";
+        conf.style.left=Math.random()*window.innerWidth+"px";
+        conf.style.top="-20px";
+        document.body.appendChild(conf);
+        setTimeout(()=>conf.remove(),3000);
+    }
+}
+
 /* ACCEPT */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
     page3.classList.add("blur-page");
+    celebration();
 }
 
 /* CLOSE ALERT */
