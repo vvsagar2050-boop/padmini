@@ -102,8 +102,8 @@ body::before{
     z-index:-1;
 }
 
-/* Blur class */
-.blur-page3{
+/* BLUR ONLY IMAGE */
+.blur-img{
     filter:blur(8px);
 }
 
@@ -118,16 +118,13 @@ body::before{
     text-align:left;
     color:white;
     font-weight:500;
-    animation:fadeInLeft 1s ease forwards;
 }
 
-/* spacing for final question */
 .mainQuestion{
     display:block;
     margin-top:30px;
 }
 
-/* below text */
 #finalMsg{
     position:absolute;
     bottom:170px;
@@ -138,7 +135,6 @@ body::before{
     color:white;
 }
 
-/* hover text */
 #noTextAfterHover{
     position:absolute;
     bottom:120px;
@@ -150,7 +146,6 @@ body::before{
     display:none;
 }
 
-/* buttons */
 #proposalBtns{
     position:absolute;
     bottom:40px;
@@ -177,7 +172,7 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* ALERT (moved slightly down) */
+/* ALERT */
 #finalPopup{
     position:fixed;
     top:18%;
@@ -191,11 +186,9 @@ body::before{
     display:none;
     width:90%;
     max-width:420px;
-
     background:black;
     color:white;
     box-shadow:0 0 40px rgba(255,0,100,0.6);
-    overflow:hidden;
 }
 
 #finalPopup button{
@@ -224,27 +217,11 @@ body::before{
     z-index:9998;
 }
 
-/* Emoji blast */
-.blast{
-    position:absolute;
-    font-size:22px;
-    animation:fall 2s linear forwards;
-}
-@keyframes fall{
-    0%{transform:translateY(-20px);opacity:1;}
-    100%{transform:translateY(220px);opacity:0;}
-}
-
 /* Mobile */
 @media(max-width:768px){
     #finalText{width:90%;}
     #finalMsg{width:90%; bottom:200px;}
     #noTextAfterHover{width:90%; bottom:150px;}
-}
-
-@keyframes fadeInLeft{
-from{opacity:0; transform:translateX(-50px);}
-to{opacity:1; transform:translateX(0);}
 }
 </style>
 </head>
@@ -256,6 +233,7 @@ to{opacity:1; transform:translateX(0);}
 <!-- PAGE 1 -->
 <div id="page1" class="page">
     <h1>Padhu, Will You Be My Valentine? ❤️</h1>
+    <h2>Padhu NO button click chey.....click chestunte dorakkundaa Paaripothundaa.....ithe
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -265,10 +243,10 @@ to{opacity:1; transform:translateX(0);}
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru avvaku 😜 naalo unna vibrations valla phone vibrate avuthundhi 📳  
-        chusindhi chalu okay kottu 😌
+        hloo kangaru avvaku...naalo unna vibrations nee phone ki pampinchaanu andhuke nee phone vibrate avuthundhi...
+        chusindhi chalu okay kottu... 😌
     </h2>
-    <button id="okBtn" class="btn" disabled>OK 😌</button>
+    <button id="okBtn" class="btn" disabled>OKAY 😌</button>
 </div>
 
 <!-- PAGE 3 -->
@@ -329,6 +307,7 @@ const okBtn=document.getElementById("okBtn");
 const reject=document.getElementById("reject");
 const noTextAfterHover=document.getElementById("noTextAfterHover");
 const happyMessage=document.getElementById("happyMessage");
+const bgImage=document.querySelector("#page3 img");
 
 /* PAGE1 NO RUN */
 function move(btn){
@@ -376,7 +355,7 @@ function hearts(){
 /* ACCEPT */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
-    page3.classList.add("blur-page3");
+    bgImage.classList.add("blur-img"); // blur only image
 }
 
 /* CLOSE ALERT */
@@ -388,7 +367,7 @@ function closeFinalPopup(){
     document.getElementById("proposalBtns").style.display="none";
     noTextAfterHover.style.display="none";
 
-    page3.classList.add("blur-page3");
+    bgImage.classList.add("blur-img"); // keep image blurred
     happyMessage.style.display="block";
 }
 </script>
