@@ -46,18 +46,32 @@ body::before{
     text-align:center;
     padding:20px;
     box-sizing:border-box;
-    transition:opacity 0.5s ease;
+    transition:0.5s;
 }
 .hidden{
     opacity:0;
     pointer-events:none;
 }
 
+/* PAGE BLUR (WHEN ALERT OPEN) */
+.blur-page{
+    filter:blur(8px);
+}
+
 /* PAGE 1 */
 #page1 h1{
     font-size:clamp(26px,6vw,46px);
-    margin-bottom:30px;
+    margin-bottom:20px;
     text-shadow:0 0 20px #ff4da6;
+}
+
+#page1 h2{
+    font-size:clamp(16px,4vw,22px);
+    margin-bottom:30px;
+}
+
+#page1 .btn{
+    margin:15px;
 }
 
 .btn{
@@ -66,7 +80,6 @@ body::before{
     border:none;
     border-radius:8px;
     cursor:pointer;
-    margin:10px;
 }
 
 #yes1{background:#ff3366;color:white;}
@@ -74,10 +87,12 @@ body::before{
 
 /* PAGE 2 */
 #page2 h2{
-    font-size:clamp(18px,4vw,26px);
+    font-size:clamp(22px,5vw,30px);
     color:black;
-    max-width:600px;
+    max-width:700px;
+    text-shadow:0 0 10px red;
 }
+
 #okBtn{
     background:#ff3366;
     color:white;
@@ -100,11 +115,6 @@ body::before{
     height:100%;
     object-fit:cover;
     z-index:-1;
-}
-
-/* BLUR ONLY IMAGE */
-.blur-img{
-    filter:blur(8px);
 }
 
 /* MAIN TEXT */
@@ -233,7 +243,7 @@ body::before{
 <!-- PAGE 1 -->
 <div id="page1" class="page">
     <h1>Padhu, Will You Be My Valentine? ❤️</h1>
-    <h2>Padhu NO button click chey.....click chestunte dorakkundaa Paaripothundaa.....ithe
+    <h2>Padhu NO button click chey... click chestunte dorakkundaa Paaripothundaa.....ithe 😜</h2>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -243,7 +253,7 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru avvaku...naalo unna vibrations nee phone ki pampinchaanu andhuke nee phone vibrate avuthundhi...
+        hloo kangaru avvaku... naalo unna vibrations nee phone ki pampinchaanu andhuke nee phone vibrate avuthundhi...  
         chusindhi chalu okay kottu... 😌
     </h2>
     <button id="okBtn" class="btn" disabled>OKAY 😌</button>
@@ -255,8 +265,8 @@ body::before{
 
     <div id="finalText">
         Anjaneyudi balam🔥💪...
-        <strong>Anna maata javadaatani Lakshmanudu⚔️...</strong>
-        Ichina maata kosam <strong>sainyanni ventesukochina Sugreevudu🛡️🐒...</strong>
+        Anna maata javadaatani Lakshmanudu⚔️...
+        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
         Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
         naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
 
@@ -289,11 +299,9 @@ body::before{
 <div id="finalPopup">
     <h3>💖 Padhu said YES! 💖</h3>
     <p>
-    😊 Vijju : yenti padhu navvuthunnavaa?...<br><br>
-    🙈 Padhu : haa konchem.....<br><br>
-    😏 Vijju : yenti blush kuda avuthunattu unnav??....<br><br>
-    🤭 Padhu : aha ledhu andi....<br><br>
-    ❤️ Love you sooo much... 🍫🎁💋
+    😏 Vijju : yenti blusing movement ahh?...<br><br>
+    🙈 Padhu : aha alaa am ledhu andi...<br><br>
+    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -307,7 +315,6 @@ const okBtn=document.getElementById("okBtn");
 const reject=document.getElementById("reject");
 const noTextAfterHover=document.getElementById("noTextAfterHover");
 const happyMessage=document.getElementById("happyMessage");
-const bgImage=document.querySelector("#page3 img");
 
 /* PAGE1 NO RUN */
 function move(btn){
@@ -355,19 +362,19 @@ function hearts(){
 /* ACCEPT */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
-    bgImage.classList.add("blur-img"); // blur only image
+    page3.classList.add("blur-page");
 }
 
 /* CLOSE ALERT */
 function closeFinalPopup(){
     finalPopup.style.display="none";
+    page3.classList.remove("blur-page");
 
     document.getElementById("finalText").style.display="none";
     document.getElementById("finalMsg").style.display="none";
     document.getElementById("proposalBtns").style.display="none";
     noTextAfterHover.style.display="none";
 
-    bgImage.classList.add("blur-img"); // keep image blurred
     happyMessage.style.display="block";
 }
 </script>
