@@ -113,12 +113,11 @@ body::before{
     z-index:-1;
 }
 
-/* LITTLE BLACK BLUR BACKGROUND FOR TEXT */
-#finalText, #finalMsg, #noTextAfterHover{
-    background:rgba(0,0,0,0.35);
-    padding:15px;
-    border-radius:15px;
-    backdrop-filter:blur(4px);
+/* WHITE TEXT WITH LIGHT BLACK SHADOW */
+#finalText,
+#finalMsg,
+#noTextAfterHover{
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
 /* MAIN TEXT */
@@ -186,8 +185,8 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* CONFETTI / ROSES */
-.confetti{
+/* FALLING FLOWERS */
+.falling{
     position:absolute;
     font-size:22px;
     animation:fall 3s linear forwards;
@@ -268,7 +267,7 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru avvaku... naalo unna vibrations nee phone ki pampinchaanu andhuke nee phone vibrate avuthundhi...  
+        hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki pampinchaanu konni vibrations.....  
         chusindhi chalu okay kottu... 😌
     </h2>
     <button id="okBtn" class="btn" disabled>OKAY 😌</button>
@@ -333,6 +332,8 @@ const reject=document.getElementById("reject");
 const noTextAfterHover=document.getElementById("noTextAfterHover");
 const happyMessage=document.getElementById("happyMessage");
 
+let flowerInterval;
+
 /* PAGE1 NO RUN */
 function move(btn){
     btn.style.position="absolute";
@@ -376,30 +377,35 @@ function hearts(){
     },300);
 }
 
-/* CONFETTI + ROSES */
-function celebration(){
-    for(let i=0;i<30;i++){
-        const conf=document.createElement("div");
-        conf.className="confetti";
-        conf.innerHTML=Math.random()>0.5?"🎉":"🌹";
-        conf.style.left=Math.random()*window.innerWidth+"px";
-        conf.style.top="-20px";
-        document.body.appendChild(conf);
-        setTimeout(()=>conf.remove(),3000);
-    }
+/* CONTINUOUS FLOWERS */
+function startCelebration(){
+    flowerInterval=setInterval(()=>{
+        const flower=document.createElement("div");
+        flower.className="falling";
+        flower.innerHTML=Math.random()>0.5?"🌹":"🎉";
+        flower.style.left=Math.random()*window.innerWidth+"px";
+        flower.style.top="-20px";
+        document.body.appendChild(flower);
+        setTimeout(()=>flower.remove(),3000);
+    },300);
+}
+
+function stopCelebration(){
+    clearInterval(flowerInterval);
 }
 
 /* ACCEPT */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
     page3.classList.add("blur-page");
-    celebration();
+    startCelebration();
 }
 
 /* CLOSE ALERT */
 function closeFinalPopup(){
     finalPopup.style.display="none";
     page3.classList.remove("blur-page");
+    stopCelebration();
 
     document.getElementById("finalText").style.display="none";
     document.getElementById("finalMsg").style.display="none";
