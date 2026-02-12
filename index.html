@@ -12,20 +12,15 @@ body{
     height:100vh;
 }
 
-/* BACKGROUND IMAGE */
+/* Background */
 body::before{
     content:'';
     position:fixed;
-    top:0; left:0;
     width:100%;
     height:100%;
-    background-image:url('img/p6.jpg');
-    background-size:cover;
-    background-position:center;
+    background:url('img/p6.jpg') center/cover no-repeat;
     z-index:-2;
 }
-
-/* BLUR LAYER */
 .blur-overlay{
     position:fixed;
     width:100%;
@@ -35,7 +30,7 @@ body::before{
     z-index:-1;
 }
 
-/* PAGES */
+/* Pages */
 .page{
     position:absolute;
     width:100%;
@@ -47,53 +42,32 @@ body::before{
     text-align:center;
     padding:20px;
     box-sizing:border-box;
-    transition:opacity 0.5s ease;
+    transition:0.5s;
 }
-.hidden{
-    opacity:0;
-    pointer-events:none;
-}
+.hidden{opacity:0;pointer-events:none;}
 
-/* PAGE 1 */
-#page1 h1{
-    font-size:clamp(26px,6vw,46px);
-    margin-bottom:30px;
-    text-shadow:0 0 20px #ff4da6;
-}
-
-/* BUTTONS */
 .btn{
     padding:12px 25px;
-    font-size:clamp(14px,4vw,18px);
     border:none;
     border-radius:8px;
     cursor:pointer;
     margin:10px;
+    font-size:16px;
 }
+#yes1,#okBtn,#accept{background:#ff3366;color:white;}
+#no1,#reject{background:black;color:white;}
 
-/* PAGE 1 BUTTONS */
-#yes1{background:#ff3366;color:white;}
-#no1{background:black;color:white;}
-
-/* PAGE 2 CARD */
-#page2 .card{
+/* Page 2 Card */
+.card{
     backdrop-filter:blur(10px);
     background:rgba(255,255,255,0.1);
-    padding:40px 30px;
+    padding:40px;
     border-radius:20px;
-    box-shadow:0 0 40px rgba(255,255,255,0.2);
-    width:90%;
     max-width:400px;
-    text-align:center;
 }
 
-/* PAGE 3 */
-#page3{
-    position:relative;
-    width:100%;
-    height:100vh;
-    overflow:hidden;
-}
+/* Page 3 */
+#page3{position:relative;overflow:hidden;}
 #page3 img{
     position:absolute;
     width:100%;
@@ -101,81 +75,124 @@ body::before{
     object-fit:cover;
     z-index:-1;
 }
-
 #finalText{
     position:absolute;
     top:5%;
     left:5%;
     width:90%;
-    max-width:700px;
-    font-size:clamp(18px,4vw,26px);
-    line-height:2;
-    text-align:left;
     color:white;
-    font-weight:500;
+    font-size:20px;
+    line-height:1.8;
+    text-align:left;
 }
-
+#proposalText{
+    position:absolute;
+    bottom:120px;
+    left:5%;
+    width:90%;
+    color:white;
+    font-weight:bold;
+}
+#noHoverText{
+    position:absolute;
+    bottom:90px;
+    left:5%;
+    width:90%;
+    color:yellow;
+    display:none;
+}
 #proposalBtns{
     position:absolute;
     bottom:40px;
     left:5%;
-    display:flex;
-    gap:15px;
-}
-#proposalBtns .btn{
-    background:#ff3366;
-    color:white;
 }
 
-/* HEARTS */
+/* Hearts */
 .heart{
     position:absolute;
-    font-size:clamp(20px,5vw,28px);
+    font-size:24px;
     animation:float 3s linear forwards;
 }
 @keyframes float{
-    0%{transform:translateY(0);opacity:1;}
-    100%{transform:translateY(-300px);opacity:0;}
+    from{transform:translateY(0);opacity:1;}
+    to{transform:translateY(-300px);opacity:0;}
 }
 
-/* FINAL POPUP */
-#finalPopup{
+/* Instagram Chat Popup */
+#chatPopup{
     position:fixed;
-    top:10%;
-    left:50%;
-    transform:translateX(-50%);
+    bottom:0;
+    left:0;
+    width:100%;
+    height:75%;
     background:white;
-    color:black;
-    padding:30px 25px;
-    border-radius:20px;
-    text-align:left;
-    font-size:16px;
-    box-shadow:0 0 30px rgba(0,0,0,0.5);
-    z-index:9999;
+    border-top-left-radius:25px;
+    border-top-right-radius:25px;
+    box-shadow:0 -5px 30px rgba(0,0,0,0.3);
     display:none;
-    max-width:400px;
+    flex-direction:column;
+    z-index:9999;
 }
-#finalPopup button{
-    margin-top:20px;
-    padding:10px 20px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+.chat-header{
     background:#ff3366;
     color:white;
+    padding:15px;
     font-weight:bold;
+    text-align:center;
+}
+.chat-body{
+    flex:1;
+    padding:15px;
+    overflow-y:auto;
+    background:#f2f2f2;
+    display:flex;
+    flex-direction:column;
+}
+.msg{
+    max-width:75%;
+    padding:10px 15px;
+    margin:8px 0;
+    border-radius:20px;
+    font-size:14px;
+}
+.left{background:#e4e6eb;align-self:flex-start;}
+.right{background:#ff3366;color:white;align-self:flex-end;}
+.chat-footer{
+    padding:10px;
+    text-align:center;
+}
+.chat-footer button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#ff3366;
+    color:white;
+}
+
+/* Confetti */
+#confettiCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:9998;
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="confettiCanvas"></canvas>
 <div class="blur-overlay"></div>
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-    <h1>Padhu, Will You Be My Valentine? ❤️</h1>
-    <h3>Firstu Yes click chey 😜</h3>
+    <h1 style="color:white;">Padhu, Will You Be My Valentine? ❤️</h1>
+    <p style="color:white;">
+        Padhu firstu NO click chey....paaaripothundhaaa ithe.....
+    </p>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -185,88 +202,89 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <div class="card">
-        <h2>😜 Oye Oye...</h2>
-        <p>
-            Hloo kangaru avvaku naalo unna vibrations valla phone vibrate avuthundhi...
-            chusindhi chalu okay kottu 😜
+        <p style="color:white;">
+        Hloo kangaru avvaku naalo unna vibrations valla phone vibrate avuthundhi...
+        chusindhi chalu okay kottu 😜
         </p>
-        <button id="okBtn" class="btn" style="background:#ff3366;color:white;">
-            OK 😍
-        </button>
+        <button id="okBtn" class="btn">OK 😍</button>
     </div>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-    <img src="img/p6.jpg" alt="Love Image">
+    <img src="img/p6.jpg">
 
     <div id="finalText">
-        Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...
-        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
-        Please nuv naa Seethavi Avuthava?? 🤌🏻💖
+        Naa Seethavi Avuthava?? 🤌🏻💖
+    </div>
+
+    <div id="proposalText">
+        please padhu oppukovachu kadaaa..okay oppukokapothe dammunte no click chey 😜
+    </div>
+
+    <div id="noHoverText">
+        yenti NO click cheddam ante button miss ipoyindhaa....
+        ithe chachinattu inka am click cheyyalo telusu gaa..... 😏
     </div>
 
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
+        <button id="reject" class="btn">No 😜</button>
     </div>
 </div>
 
-<!-- FINAL POPUP -->
-<div id="finalPopup">
-    <h2>Padhu said YES! 💖🔥</h2>
-
-    <p><strong>Vijju :</strong> yenti padhu navvuthunnavaa?... 😏</p>
-    <p><strong>Padhu :</strong> haa konchem..... 😊</p>
-    <p><strong>Vijju :</strong> yenti blush kuda avuthunattu unnav??.... 😜</p>
-    <p><strong>Padhu :</strong> aha ledhu andi.... 🙈</p>
-    <p>
-        <strong>Vijju :</strong> final ga inkaa yekkuva gaa love you ❤️...
-        Boledenni chocolettulu 🍫...
-        Chaalaa giftulu 🎁...
-        And padhu ki ive maa mudhuluu 😘😘😘
-    </p>
-
-    <button onclick="closeFinalPopup()">Close</button>
+<!-- Instagram Chat Popup -->
+<div id="chatPopup">
+    <div class="chat-header">padhu 💖</div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-footer">
+        <button onclick="closeChat()">Close 💕</button>
+    </div>
 </div>
 
 <script>
 const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
-const finalPopup=document.getElementById("finalPopup");
+const chatPopup=document.getElementById("chatPopup");
+const chatBody=document.getElementById("chatBody");
 
-/* Move No button */
+/* Move button */
 function move(btn){
     btn.style.position="absolute";
     btn.style.left=Math.random()*(window.innerWidth-100)+"px";
     btn.style.top=Math.random()*(window.innerHeight-50)+"px";
 }
+
+/* First page NO move */
 document.getElementById("no1").onmouseover=function(){move(this);}
 
-/* PAGE 1 YES CLICK */
+/* Page1 YES */
 document.getElementById("yes1").onclick=function(){
-
-    // Mobile vibration only
     if (navigator.vibrate && /Mobi|Android/i.test(navigator.userAgent)) {
         navigator.vibrate(5000);
     }
-
     setTimeout(()=>{
         page1.classList.add("hidden");
         page2.classList.remove("hidden");
     },500);
 }
 
-/* PAGE 2 OK CLICK */
+/* Page2 OK */
 document.getElementById("okBtn").onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
     hearts();
 }
 
-/* HEARTS ANIMATION */
+/* Page3 NO disappear */
+const reject=document.getElementById("reject");
+reject.onmouseover=reject.ontouchstart=function(){
+    reject.style.display="none";
+    document.getElementById("noHoverText").style.display="block";
+}
+
+/* Hearts */
 function hearts(){
     setInterval(()=>{
         const heart=document.createElement("div");
@@ -279,14 +297,68 @@ function hearts(){
     },300);
 }
 
-/* FINAL YES */
+/* YES Final */
 document.getElementById("accept").onclick=function(){
-    finalPopup.style.display="block";
+    startConfetti();
+    openChat();
 }
 
-/* CLOSE POPUP */
-function closeFinalPopup(){
-    finalPopup.style.display="none";
+/* Chat */
+function openChat(){
+    chatPopup.style.display="flex";
+    const messages=[
+        {text:"Vijju : yenti padhu navvuthunnavaa?... 😏",side:"right"},
+        {text:"Padhu : haa konchem..... 😊",side:"left"},
+        {text:"Vijju : yenti blush kuda avuthunattu unnav??.... 😜",side:"right"},
+        {text:"Padhu : aha ledhu andi.... 🙈",side:"left"},
+        {text:"Vijju : final ga inkaa yekkuva gaa love you ❤️ Boledenni chocolates 🍫 Chaalaa giftulu 🎁 And padhu ki ive maa mudhuluu 😘😘😘",side:"right"}
+    ];
+    let i=0;
+    function showMsg(){
+        if(i<messages.length){
+            const div=document.createElement("div");
+            div.className="msg "+messages[i].side;
+            div.innerText=messages[i].text;
+            chatBody.appendChild(div);
+            chatBody.scrollTop=chatBody.scrollHeight;
+            i++;
+            setTimeout(showMsg,1000);
+        }
+    }
+    showMsg();
+}
+function closeChat(){
+    chatPopup.style.display="none";
+    chatBody.innerHTML="";
+}
+
+/* Confetti */
+function startConfetti(){
+    const canvas=document.getElementById("confettiCanvas");
+    const ctx=canvas.getContext("2d");
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+    const pieces=[];
+    for(let i=0;i<150;i++){
+        pieces.push({
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+            r:Math.random()*6+4,
+            d:Math.random()*150
+        });
+    }
+    setInterval(()=>{
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle="hsl("+Math.random()*360+",100%,50%)";
+        ctx.beginPath();
+        pieces.forEach(p=>{
+            ctx.moveTo(p.x,p.y);
+            ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+            p.y+=3;
+            if(p.y>canvas.height) p.y=0;
+        });
+        ctx.fill();
+    },20);
 }
 </script>
 
