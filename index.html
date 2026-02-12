@@ -53,50 +53,30 @@ body::before{
     pointer-events:none;
 }
 
-/* BLUR PAGE WHEN ALERT OPEN */
 .blur-page{
     filter:blur(8px);
 }
 
-/* PAGE 1 */
-#page1 h1{
-    font-size:clamp(26px,6vw,46px);
-    margin-bottom:20px;
-    text-shadow:0 0 20px #ff4da6;
-}
-#page1 h2{
-    font-size:clamp(16px,4vw,22px);
-    margin-bottom:30px;
-}
-#page1 .btn{
-    margin:15px;
-}
-
+/* BUTTON */
 .btn{
     padding:12px 25px;
-    font-size:clamp(14px,4vw,18px);
+    font-size:16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
 }
+
+/* PAGE 1 */
 #yes1{background:#ff3366;color:white;}
 #no1{background:black;color:white;position:relative;}
 
 /* PAGE 2 */
 #page2 h2{
-    font-size:clamp(22px,5vw,30px);
     color:black;
     max-width:700px;
-    text-shadow:0 0 10px red;
 }
-#okBtn{
-    background:#ff3366;
-    color:white;
-}
-#okBtn:disabled{
-    background:gray;
-    cursor:not-allowed;
-}
+#okBtn{background:#ff3366;color:white;}
+#okBtn:disabled{background:gray;}
 
 /* PAGE 3 */
 #page3{
@@ -113,29 +93,20 @@ body::before{
     z-index:-1;
 }
 
-/* WHITE TEXT WITH LIGHT BLACK SHADOW */
-#finalText,
-#finalMsg,
-#noTextAfterHover{
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+/* TEXT */
+#finalText,#finalMsg,#noTextAfterHover{
+    text-shadow:1px 1px 4px rgba(0,0,0,0.7);
+    color:white;
 }
 
-/* MAIN TEXT */
 #finalText{
     position:absolute;
     top:5%;
     left:5%;
     width:45%;
-    font-size:clamp(18px,4vw,26px);
-    line-height:2;
+    font-size:20px;
+    line-height:1.8;
     text-align:left;
-    color:white;
-    font-weight:500;
-}
-
-.mainQuestion{
-    display:block;
-    margin-top:30px;
 }
 
 #finalMsg{
@@ -143,9 +114,7 @@ body::before{
     bottom:170px;
     left:5%;
     width:45%;
-    font-size:clamp(16px,4vw,20px);
     font-weight:bold;
-    color:white;
 }
 
 #noTextAfterHover{
@@ -153,9 +122,7 @@ body::before{
     bottom:120px;
     left:5%;
     width:45%;
-    font-size:clamp(16px,4vw,20px);
     font-weight:bold;
-    color:white;
     display:none;
 }
 
@@ -164,31 +131,30 @@ body::before{
     bottom:40px;
     left:5%;
     display:flex;
-    gap:8px;
+    gap:10px;
 }
 #proposalBtns .btn{
     background:#ff3366;
     color:white;
 }
-#reject{
-    background:black !important;
-}
+#reject{background:black !important;}
 
 /* HEARTS */
 .heart{
     position:absolute;
-    font-size:clamp(20px,5vw,28px);
+    font-size:24px;
     animation:float 3s linear forwards;
 }
 @keyframes float{
-    0%{transform:translateY(0);opacity:1;}
+    0%{transform:translateY(0);}
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* FALLING FLOWERS */
+/* FLOWERS */
 .falling{
     position:absolute;
     font-size:22px;
+    pointer-events:none;
     animation:fall 3s linear forwards;
 }
 @keyframes fall{
@@ -199,13 +165,12 @@ body::before{
 /* ALERT */
 #finalPopup{
     position:fixed;
-    top:18%;
+    top:50%;
     left:50%;
-    transform:translateX(-50%);
-    padding:30px 25px;
+    transform:translate(-50%,-50%);
+    padding:30px;
     border-radius:20px;
     text-align:left;
-    font-size:16px;
     z-index:9999;
     display:none;
     width:90%;
@@ -213,6 +178,7 @@ body::before{
     background:black;
     color:white;
     box-shadow:0 0 40px rgba(255,0,100,0.6);
+    will-change:transform;
 }
 
 #finalPopup button{
@@ -223,7 +189,6 @@ body::before{
     background:#ff3366;
     color:white;
     font-weight:bold;
-    cursor:pointer;
 }
 
 /* HAPPY MESSAGE */
@@ -232,7 +197,7 @@ body::before{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    font-size:clamp(28px,6vw,50px);
+    font-size:32px;
     color:white;
     text-align:center;
     display:none;
@@ -241,11 +206,9 @@ body::before{
     z-index:9998;
 }
 
-/* Mobile */
+/* MOBILE FIX */
 @media(max-width:768px){
-    #finalText{width:90%;}
-    #finalMsg{width:90%; bottom:200px;}
-    #noTextAfterHover{width:90%; bottom:150px;}
+    #finalText,#finalMsg,#noTextAfterHover{width:90%;}
 }
 </style>
 </head>
@@ -257,7 +220,7 @@ body::before{
 <!-- PAGE 1 -->
 <div id="page1" class="page">
     <h1>Padhu, Will You Be My Valentine? ❤️</h1>
-    <h2>Padhu NO button click chey... click chestunte dorakkundaa Paaripothundaa.....ithe 😜</h2>
+    <h2>Padhu Firstu NO button ni pattuko... dorikithe consider chestha 😜</h2>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -267,35 +230,32 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru ipoku... naalo vibrations yekkuvaipoyay..andhuke nee phone ki pampinchaanu konni vibrations.....  
-        chusindhi chalu okay kottu... 😌
+        hloo kangaru ipoku... naalo vibrations ekkuvaipoyay...
+        andhuke nee phone ki pampinchaanu 😌
     </h2>
     <button id="okBtn" class="btn" disabled>OKAY 😌</button>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
-    <img src="img/p6.jpg" alt="Love Image">
+    <img src="img/p6.jpg">
 
     <div id="finalText">
         Anjaneyudi balam🔥💪...
         Anna maata javadaatani Lakshmanudu⚔️...
-        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
-
-        <strong class="mainQuestion">
-            Please nuv naa Seethavi Avuthava?? 🤌🏻💖
-        </strong>
+        Ichina maata kosam Sugreevudu🛡️🐒...
+        Veellandarini thisukuni Seetha kosam velladu Raamudu🏹...
+        naku veellu lekapoina, naa Seetha kosam velthanu🚶‍♂️🌍...
+        <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
 
     <div id="finalMsg">
-        Please Padhu oppukovachu kadaa.. 😇  
-        Oppukokapothe neeku dammunte No click chey 😜
+        Please Padhu oppukovachu kadaa 😇  
+        Oppukokapothe dammunte No click chey 😜
     </div>
 
     <div id="noTextAfterHover">
-        No click cheddam ante miss ipoyindha ithe......
+        No click cheddam ante miss ipoyindhaa... 😜
     </div>
 
     <div id="proposalBtns">
@@ -313,11 +273,11 @@ body::before{
 <div id="finalPopup">
     <h3>💖 Padhu said YES! 💖</h3>
     <p>
-    😏 Vijju : yenti blusing movement ahh?...<br><br>
+    😏 Vijju : yenti blushing movement ahh?...<br><br>
     🙈 Padhu : aha alaa am ledhu andi...<br><br>
-    😄 Vijju : Nakendhuko konchem navvuthunnattu anipistundhe ?....<br><br>
-    😊 Padhu : Haa andi Konchem.....<br><br>
-    ❤️ Vijju : padhu ki inkaaa yekkuvaga & chaala chaala love you.. boledenni chocolattulu.... and padhu ki ivee maa mudhulu.... 💋💋💋🍫🌹
+    😄 Vijju : Nakendhuko navvuthunnattu anipistundhe?...<br><br>
+    😊 Padhu : Haa andi konchem...<br><br>
+    ❤️ Vijju : padhu ki chaala chaala love you 💋🍫🌹
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -377,22 +337,19 @@ function hearts(){
     },300);
 }
 
-/* CONTINUOUS FLOWERS */
+/* FLOWERS STABLE */
 function startCelebration(){
     flowerInterval=setInterval(()=>{
         const flower=document.createElement("div");
         flower.className="falling";
-        flower.innerHTML=Math.random()>0.5?"🌹":"🎉";
+        flower.innerHTML="🌹";
         flower.style.left=Math.random()*window.innerWidth+"px";
         flower.style.top="-20px";
-        document.body.appendChild(flower);
+        page3.appendChild(flower);
         setTimeout(()=>flower.remove(),3000);
     },300);
 }
-
-function stopCelebration(){
-    clearInterval(flowerInterval);
-}
+function stopCelebration(){ clearInterval(flowerInterval); }
 
 /* ACCEPT */
 document.getElementById("accept").onclick=function(){
@@ -401,7 +358,7 @@ document.getElementById("accept").onclick=function(){
     startCelebration();
 }
 
-/* CLOSE ALERT */
+/* CLOSE */
 function closeFinalPopup(){
     finalPopup.style.display="none";
     page3.classList.remove("blur-page");
