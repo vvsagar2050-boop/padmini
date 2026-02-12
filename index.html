@@ -101,6 +101,12 @@ body::before{
     object-fit:cover;
     z-index:-1;
 }
+
+/* Blur when popup active */
+.blur-page3{
+    filter:blur(8px);
+}
+
 #finalText{
     position:absolute;
     top:5%;
@@ -113,18 +119,22 @@ body::before{
     font-weight:500;
     animation:fadeInLeft 1s ease forwards;
 }
+
 #finalMsg{
     position:absolute;
-    bottom:180px;
+    bottom:200px;
     left:5%;
+    width:45%;
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
     color:white;
 }
+
 #noHoverText{
     position:absolute;
-    bottom:140px;
+    bottom:150px;
     left:5%;
+    width:45%;
     font-size:clamp(16px,4vw,20px);
     font-weight:bold;
     color:white;
@@ -157,7 +167,7 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* ALERT */
+/* ALERT BLACK THEME */
 #finalPopup{
     position:fixed;
     top:8%;
@@ -172,10 +182,9 @@ body::before{
     width:90%;
     max-width:420px;
 
-    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    background:black;
     color:white;
-    backdrop-filter:blur(10px);
-    box-shadow:0 0 30px rgba(0,0,0,0.6);
+    box-shadow:0 0 40px rgba(255,0,100,0.6);
     overflow:hidden;
 }
 
@@ -184,25 +193,29 @@ body::before{
     padding:10px 20px;
     border:none;
     border-radius:8px;
-    background:white;
-    color:#d62976;
+    background:#ff3366;
+    color:white;
     font-weight:bold;
     cursor:pointer;
 }
 
-/* EMOJI BLAST */
+/* Emoji blast inside alert */
 .blast{
     position:absolute;
     font-size:22px;
     animation:fall 2s linear forwards;
 }
+
 @keyframes fall{
     0%{transform:translateY(-20px);opacity:1;}
     100%{transform:translateY(220px);opacity:0;}
 }
 
+/* Mobile Fix */
 @media(max-width:768px){
     #finalText{width:90%;}
+    #finalMsg{width:90%; bottom:230px;}
+    #noHoverText{width:90%; bottom:180px;}
 }
 
 @keyframes fadeInLeft{
@@ -228,8 +241,8 @@ to{opacity:1; transform:translateX(0);}
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <h2>
-        hloo kangaru avvaku naalo unna vibrations valla phone vibrate avuthundhi...
-        chusindhi chalu okay kottu 😜
+        hloo kangaru avvaku 😜 naalo unna vibrations valla phone vibrate avuthundhi 📳  
+        chusindhi chalu okay kottu 😌
     </h2>
     <button id="okBtn" class="btn" disabled>OK 😌</button>
 </div>
@@ -239,22 +252,22 @@ to{opacity:1; transform:translateX(0);}
     <img src="img/p6.jpg">
 
     <div id="finalText">
-        Anjaneyudi balam🔥💪...
-        Anna maata javadaatani Lakshmanudu⚔️...
-        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
-        Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
-        naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
+        Anjaneyudi balam🔥💪...<br>
+        Lakshmanudu⚔️...<br>
+        Sugreevudu🛡️🐒...<br>
+        Veellandarini thisukuni Seetha kosam velladu Raamudu🏹...<br>
+        naku veellu lekapoina naa Seetha kosam💖 yentha dooramina velthanu🌍...<br><br>
         <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
     </div>
 
     <div id="finalMsg">
-        Please Padhu oppukovachu kadaa.. 😇 
-        okay oppukokapothe dammunte NO click Chey chuddam 😜
+        Please Padhu oppukovachu kadaa 😇  
+        dammunte NO click chey chuddam 😜
     </div>
 
     <div id="noHoverText">
-        Yenti No click cheddam ante button miss ipoyindhaaa...
-        inka verey option am ledhu chachinattu....
+        Yenti No click cheddam ante button miss ipoyindhaaa 😜  
+        inka verey option ledhu 😏
     </div>
 
     <div id="proposalBtns">
@@ -265,15 +278,16 @@ to{opacity:1; transform:translateX(0);}
 
 <!-- ALERT -->
 <div id="finalPopup">
-    <h3>Padhu said YES! 💖🔥</h3>
+    <h3>💖 Padhu said YES! 💖</h3>
     <p>
-    Vijju : yenti padhu navvuthunnavaa?...<br><br>
-    Padhu : haa konchem.....<br><br>
-    Vijju : yenti blush kuda avuthunattu unnav??....<br><br>
-    Padhu : aha ledhu andi....<br><br>
-    Vijju : final ga inkaa yekkuva gaa love you....
-    Boledenni chocolettulu.... Chaalaa giftulu....
-    And padhu ki ive maa mudhuluu.... 💋💋
+    😊 Vijju : yenti padhu navvuthunnavaa?...<br><br>
+    🙈 Padhu : haa konchem.....<br><br>
+    😏 Vijju : yenti blush kuda avuthunattu unnav??....<br><br>
+    🤭 Padhu : aha ledhu andi....<br><br>
+    ❤️ Vijju : final ga inkaa yekkuva gaa love you...<br>
+    🍫 Boledenni chocolates...<br>
+    🎁 Chaalaa giftulu...<br>
+    💋 Ivi maa mudhuluu... 💋💋
     </p>
     <button onclick="closeFinalPopup()">Close</button>
 </div>
@@ -305,9 +319,7 @@ document.getElementById("yes1").onclick=function(){
         navigator.vibrate(5000);
     }
 
-    setTimeout(()=>{
-        okBtn.disabled=false;
-    },5000);
+    setTimeout(()=>{ okBtn.disabled=false; },5000);
 }
 
 /* PAGE2 OK */
@@ -336,14 +348,15 @@ function hearts(){
     },300);
 }
 
-/* ALERT */
+/* ACCEPT BUTTON */
 document.getElementById("accept").onclick=function(){
     finalPopup.style.display="block";
+    page3.classList.add("blur-page3");
 
-    for(let i=0;i<40;i++){
+    for(let i=0;i<35;i++){
         const emoji=document.createElement("div");
         emoji.className="blast";
-        emoji.innerHTML=["🌹","💖","✨"][Math.floor(Math.random()*3)];
+        emoji.innerHTML=["🌹","💖","✨","😍"][Math.floor(Math.random()*4)];
         emoji.style.left=Math.random()*finalPopup.offsetWidth+"px";
         finalPopup.appendChild(emoji);
         setTimeout(()=>emoji.remove(),2000);
@@ -352,6 +365,7 @@ document.getElementById("accept").onclick=function(){
 
 function closeFinalPopup(){
     finalPopup.style.display="none";
+    page3.classList.remove("blur-page3");
     document.querySelectorAll(".blast").forEach(e=>e.remove());
 }
 </script>
