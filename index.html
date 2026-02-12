@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Padhu ❤️</title>
+
 <style>
 body{
     margin:0;
@@ -24,7 +25,7 @@ body::before{
     z-index:-2;
 }
 
-/* BLUR LAYER for PAGE1 & PAGE2 */
+/* BLUR LAYER */
 .blur-overlay{
     position:fixed;
     width:100%;
@@ -74,7 +75,7 @@ body::before{
 #yes1{background:#ff3366;color:white;}
 #no1{background:black;color:white;}
 
-/* PAGE 2 */
+/* PAGE 2 CARD */
 #page2 .card{
     backdrop-filter:blur(10px);
     background:rgba(255,255,255,0.1);
@@ -84,20 +85,7 @@ body::before{
     width:90%;
     max-width:400px;
     text-align:center;
-    animation:fadeIn 1s ease forwards;
 }
-#page2 h2{
-    font-size:clamp(20px,4vw,28px);
-    margin-bottom:20px;
-}
-#page2 p{
-    font-size:clamp(14px,3vw,18px);
-    margin-bottom:20px;
-}
-
-/* BUTTONS PAGE 2 */
-#yes2{background:#ff3366;color:white;position:relative;}
-#no2{background:black;color:white;position:relative;}
 
 /* PAGE 3 */
 #page3{
@@ -113,6 +101,7 @@ body::before{
     object-fit:cover;
     z-index:-1;
 }
+
 #finalText{
     position:absolute;
     top:5%;
@@ -124,42 +113,18 @@ body::before{
     text-align:left;
     color:white;
     font-weight:500;
-    animation:fadeInLeft 1s ease forwards;
-}
-#finalText strong{
-    font-weight:700;
 }
 
-#finalMsg{
-    position:absolute;
-    bottom:160px;
-    left:5%;
-    font-size:clamp(16px,4vw,20px);
-    font-weight:bold;
-    color:white;
-}
-#noTextAfterHover{
-    position:absolute;
-    bottom:120px;
-    left:5%;
-    font-size:clamp(16px,4vw,20px);
-    font-weight:bold;
-    color:white;
-    display:none;
-}
-
-/* FINAL PAGE BUTTONS */
 #proposalBtns{
     position:absolute;
     bottom:40px;
     left:5%;
     display:flex;
-    flex-wrap:wrap;
     gap:15px;
 }
 #proposalBtns .btn{
-    background:#ff3366; 
-    color:white;         
+    background:#ff3366;
+    color:white;
 }
 
 /* HEARTS */
@@ -173,7 +138,7 @@ body::before{
     100%{transform:translateY(-300px);opacity:0;}
 }
 
-/* FINAL CUSTOM ALERT */
+/* FINAL POPUP */
 #finalPopup{
     position:fixed;
     top:10%;
@@ -183,30 +148,16 @@ body::before{
     color:black;
     padding:30px 25px;
     border-radius:20px;
-    text-align:center;
-    font-size:18px;
+    text-align:left;
+    font-size:16px;
     box-shadow:0 0 30px rgba(0,0,0,0.5);
     z-index:9999;
     display:none;
-    overflow:hidden;
+    max-width:400px;
 }
-
-/* ALERT HEART ANIMATION INSIDE ALERT */
-#finalPopup .heart{
-    position:absolute;
-    font-size:20px;
-    animation:floatAlert 2s linear forwards;
-}
-@keyframes floatAlert{
-    0%{transform:translateY(0) scale(0.8);opacity:1;}
-    100%{transform:translateY(150px) scale(1.5);opacity:0;}
-}
-
-/* ALERT BUTTON */
 #finalPopup button{
     margin-top:20px;
     padding:10px 20px;
-    font-size:16px;
     border:none;
     border-radius:8px;
     cursor:pointer;
@@ -214,14 +165,9 @@ body::before{
     color:white;
     font-weight:bold;
 }
-
-/* ANIMATIONS */
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-@keyframes fadeInLeft{from{opacity:0; transform:translateX(-50px);}to{opacity:1; transform:translateX(0);}}
-
-
 </style>
 </head>
+
 <body>
 
 <div class="blur-overlay"></div>
@@ -229,7 +175,7 @@ body::before{
 <!-- PAGE 1 -->
 <div id="page1" class="page">
     <h1>Padhu, Will You Be My Valentine? ❤️</h1>
-    <h3>Hloo Padhu....Firstu No click chey....paaripothundhaa Ithe.....</h3>
+    <h3>Firstu Yes click chey 😜</h3>
     <div>
         <button id="yes1" class="btn">Yes 💖</button>
         <button id="no1" class="btn">No 😜</button>
@@ -239,37 +185,49 @@ body::before{
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
     <div class="card">
-        <h2>Try Your Luck 😏</h2>
-        <p>The buttons like to run away… Catch the right one! 😜</p>
-        <button id="yes2" class="btn">Yes 😍</button>
-        <button id="no2" class="btn">No 🙈</button>
+        <h2>😜 Oye Oye...</h2>
+        <p>
+            Hloo kangaru avvaku naalo unna vibrations valla phone vibrate avuthundhi...
+            chusindhi chalu okay kottu 😜
+        </p>
+        <button id="okBtn" class="btn" style="background:#ff3366;color:white;">
+            OK 😍
+        </button>
     </div>
 </div>
 
 <!-- PAGE 3 -->
 <div id="page3" class="page hidden">
     <img src="img/p6.jpg" alt="Love Image">
+
     <div id="finalText">
-        Anjaneyudi balam🔥💪... <strong>Anna maata javadaatani Lakshmanudu⚔️...</strong>
-        Ichina maata kosam <strong>sainyanni ventesukochina Sugreevudu🛡️🐒...</strong>
+        Anjaneyudi balam🔥💪... Anna maata javadaatani Lakshmanudu⚔️...
+        Ichina maata kosam sainyanni ventesukochina Sugreevudu🛡️🐒...
         Veellandarini thisukuni Seetha kosam antha dooram velladu Raamudu🏹...
         naku veellu yevaru lekapoina, naa Seetha kosam💖 yentha dooramina velthanu🚶‍♂️🌍...
-        <strong>Please nuv naa Seethavi Avuthava?? 🤌🏻💖</strong>
+        Please nuv naa Seethavi Avuthava?? 🤌🏻💖
     </div>
-    <div id="finalMsg">Please Padhu oppukovachu kadaa.. 😇 Oppukokapothe neeku dammunte No click chey 😜</div>
-    <div id="noTextAfterHover">No click cheddam ante miss ipoyindha ithe......</div>
+
     <div id="proposalBtns">
         <button id="accept" class="btn">Yes 💍</button>
-        <button id="reject" class="btn">No 😜</button>
     </div>
 </div>
 
-<!-- FINAL ALERT -->
+<!-- FINAL POPUP -->
 <div id="finalPopup">
     <h2>Padhu said YES! 💖🔥</h2>
-    <p>Thank you Padhu Navvinandhuku 🙏</p>
-    <p>yentiiii Blush☺️ avuthunnavaaaa yenti</p>
-    <p>Kompadeesi naaku neney yes cheppinchukunnandhuku kopam vachesindhaa yenttii😡😡😡😡</p>
+
+    <p><strong>Vijju :</strong> yenti padhu navvuthunnavaa?... 😏</p>
+    <p><strong>Padhu :</strong> haa konchem..... 😊</p>
+    <p><strong>Vijju :</strong> yenti blush kuda avuthunattu unnav??.... 😜</p>
+    <p><strong>Padhu :</strong> aha ledhu andi.... 🙈</p>
+    <p>
+        <strong>Vijju :</strong> final ga inkaa yekkuva gaa love you ❤️...
+        Boledenni chocolettulu 🍫...
+        Chaalaa giftulu 🎁...
+        And padhu ki ive maa mudhuluu 😘😘😘
+    </p>
+
     <button onclick="closeFinalPopup()">Close</button>
 </div>
 
@@ -278,38 +236,37 @@ const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 const page3=document.getElementById("page3");
 const finalPopup=document.getElementById("finalPopup");
-const reject=document.getElementById("reject");
-const accept=document.getElementById("accept");
-const noTextAfterHover=document.getElementById("noTextAfterHover");
 
-// Hover buttons move
+/* Move No button */
 function move(btn){
     btn.style.position="absolute";
     btn.style.left=Math.random()*(window.innerWidth-100)+"px";
     btn.style.top=Math.random()*(window.innerHeight-50)+"px";
 }
-document.getElementById("no1").onmouseover=document.getElementById("no1").ontouchstart=function(){move(this);}
-document.getElementById("yes2").onmouseover=document.getElementById("yes2").ontouchstart=function(){move(this);}
+document.getElementById("no1").onmouseover=function(){move(this);}
 
-// Last page No hover only
-reject.onmouseover=reject.ontouchstart=function(){ 
-    move(this);
-    noTextAfterHover.style.display="block";
-}
-
-// PAGE TRANSITIONS
+/* PAGE 1 YES CLICK */
 document.getElementById("yes1").onclick=function(){
-    page1.classList.add("hidden");
-    page2.classList.remove("hidden");
+
+    // Mobile vibration only
+    if (navigator.vibrate && /Mobi|Android/i.test(navigator.userAgent)) {
+        navigator.vibrate(5000);
+    }
+
+    setTimeout(()=>{
+        page1.classList.add("hidden");
+        page2.classList.remove("hidden");
+    },500);
 }
 
-document.getElementById("no2").onclick=function(){
+/* PAGE 2 OK CLICK */
+document.getElementById("okBtn").onclick=function(){
     page2.classList.add("hidden");
     page3.classList.remove("hidden");
     hearts();
 }
 
-// HEARTS ANIMATION
+/* HEARTS ANIMATION */
 function hearts(){
     setInterval(()=>{
         const heart=document.createElement("div");
@@ -322,25 +279,16 @@ function hearts(){
     },300);
 }
 
-// FINAL PAGE YES click
-accept.onclick=function(){
-    showFinalPopup();
-    // create heart animation inside popup
-    for(let i=0;i<50;i++){
-        const heart=document.createElement("div");
-        heart.className="heart";
-        heart.style.left=Math.random()*finalPopup.offsetWidth+"px";
-        heart.style.top="0px";
-        finalPopup.appendChild(heart);
-        setTimeout(()=>heart.remove(),2000);
-    }
+/* FINAL YES */
+document.getElementById("accept").onclick=function(){
+    finalPopup.style.display="block";
 }
 
-// FINAL ALERT FUNCTIONS
-function showFinalPopup(){finalPopup.style.display="block";}
-function closeFinalPopup(){finalPopup.style.display="none";}
+/* CLOSE POPUP */
+function closeFinalPopup(){
+    finalPopup.style.display="none";
+}
 </script>
+
 </body>
 </html>
-
-
