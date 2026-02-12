@@ -1,365 +1,298 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Padhu ❤️</title>
+<title>Naa Seethavi Avuthava?</title>
 
 <style>
-body{
-    margin:0;
-    font-family:'Segoe UI',sans-serif;
-    overflow:hidden;
-    height:100vh;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Background */
-body::before{
-    content:'';
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:url('img/p6.jpg') center/cover no-repeat;
-    z-index:-2;
-}
-.blur-overlay{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.3);
-    backdrop-filter:blur(8px);
-    z-index:-1;
+body,html{
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
-/* Pages */
 .page{
-    position:absolute;
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-    padding:20px;
-    box-sizing:border-box;
-    transition:0.5s;
+  width:100%;
+  height:100vh;
+  position:absolute;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  transition:0.5s;
 }
-.hidden{opacity:0;pointer-events:none;}
 
+.hidden{
+  display:none;
+}
+
+/* Background Image */
+.bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.4);
+  z-index:-1;
+}
+
+/* TEXT STYLING */
+h1{
+  font-size:40px;
+  margin-bottom:10px;
+  color:black;
+}
+
+.subtext{
+  font-size:18px;
+  margin-bottom:30px;
+  color:black;
+}
+
+/* BUTTONS */
 .btn{
-    padding:12px 25px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin:10px;
-    font-size:16px;
-}
-#yes1,#okBtn,#accept{background:#ff3366;color:white;}
-#no1,#reject{background:black;color:white;}
-
-/* Page 2 Card */
-.card{
-    backdrop-filter:blur(10px);
-    background:rgba(255,255,255,0.1);
-    padding:40px;
-    border-radius:20px;
-    max-width:400px;
+  padding:12px 30px;
+  margin:10px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-/* Page 3 */
-#page3{position:relative;overflow:hidden;}
-#page3 img{
-    position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-1;
-}
-#finalText{
-    position:absolute;
-    top:5%;
-    left:5%;
-    width:90%;
-    color:white;
-    font-size:20px;
-    line-height:1.8;
-    text-align:left;
-}
-#proposalText{
-    position:absolute;
-    bottom:120px;
-    left:5%;
-    width:90%;
-    color:white;
-    font-weight:bold;
-}
-#noHoverText{
-    position:absolute;
-    bottom:90px;
-    left:5%;
-    width:90%;
-    color:yellow;
-    display:none;
-}
-#proposalBtns{
-    position:absolute;
-    bottom:40px;
-    left:5%;
+.yes{
+  background:#ff2e63;
+  color:white;
 }
 
-/* Hearts */
-.heart{
-    position:absolute;
-    font-size:24px;
-    animation:float 3s linear forwards;
+.no{
+  background:#444;
+  color:white;
+  position:relative;
 }
+
+/* Third Page Left Align */
+.third-content{
+  max-width:500px;
+  text-align:left;
+  color:white;
+}
+
+.third-content h1{
+  color:white;
+}
+
+.third-content p{
+  margin-bottom:20px;
+}
+
+/* Hover message */
+.hover-text{
+  display:none;
+  margin-top:20px;
+  color:white;
+  font-size:16px;
+}
+
+/* Instagram Style Alert */
+.alert-box{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  width:320px;
+  padding:20px;
+  border-radius:20px;
+  color:white;
+  display:none;
+  background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+  animation:pop 0.5s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.5);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* Love symbols */
+.love{
+  position:absolute;
+  font-size:20px;
+  animation:float 4s linear infinite;
+}
+
 @keyframes float{
-    from{transform:translateY(0);opacity:1;}
-    to{transform:translateY(-300px);opacity:0;}
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
-/* Instagram Chat Popup */
-#chatPopup{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:75%;
-    background:white;
-    border-top-left-radius:25px;
-    border-top-right-radius:25px;
-    box-shadow:0 -5px 30px rgba(0,0,0,0.3);
-    display:none;
-    flex-direction:column;
-    z-index:9999;
-}
-.chat-header{
-    background:#ff3366;
-    color:white;
-    padding:15px;
-    font-weight:bold;
-    text-align:center;
-}
-.chat-body{
-    flex:1;
-    padding:15px;
-    overflow-y:auto;
-    background:#f2f2f2;
-    display:flex;
-    flex-direction:column;
-}
-.msg{
-    max-width:75%;
-    padding:10px 15px;
-    margin:8px 0;
-    border-radius:20px;
-    font-size:14px;
-}
-.left{background:#e4e6eb;align-self:flex-start;}
-.right{background:#ff3366;color:white;align-self:flex-end;}
-.chat-footer{
-    padding:10px;
-    text-align:center;
-}
-.chat-footer button{
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    background:#ff3366;
-    color:white;
+/* Roses */
+.rose{
+  position:absolute;
+  font-size:24px;
+  animation:fall 4s linear infinite;
 }
 
-/* Confetti */
-#confettiCanvas{
-    position:fixed;
-    top:0;
-    left:0;
+@keyframes fall{
+  from{transform:translateY(-10vh);}
+  to{transform:translateY(100vh);}
+}
+
+/* Mobile Fix */
+@media(max-width:768px){
+
+  h1{
+    font-size:28px;
+  }
+
+  .alert-box{
+    width:90%;
+    right:5%;
+  }
+
+  .third-content{
     width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:9998;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="confettiCanvas"></canvas>
-<div class="blur-overlay"></div>
-
 <!-- PAGE 1 -->
-<div id="page1" class="page">
-    <h1 style="color:white;">Padhu, Will You Be My Valentine? ❤️</h1>
-    <p style="color:white;">
-        Padhu firstu NO click chey....paaaripothundhaaa ithe.....
-    </p>
-    <div>
-        <button id="yes1" class="btn">Yes 💖</button>
-        <button id="no1" class="btn">No 😜</button>
-    </div>
+<div class="page" id="page1">
+  <img src="your-image.jpg" class="bg">
+  <div class="overlay"></div>
+
+  <h1>Will you be my Valentine?</h1>
+  <div class="subtext">
+    Padhu firstu NO click chey....paaaripothundhaaa ithe.....
+  </div>
+
+  <button class="btn yes" onclick="nextPage()">Yes 💍</button>
 </div>
 
 <!-- PAGE 2 -->
-<div id="page2" class="page hidden">
-    <div class="card">
-        <p style="color:white;">
-        Hloo kangaru avvaku naalo unna vibrations valla phone vibrate avuthundhi...
-        chusindhi chalu okay kottu 😜
-        </p>
-        <button id="okBtn" class="btn">OK 😍</button>
-    </div>
+<div class="page hidden" id="page2">
+  <h1>Naa Seethavi Avuthava?? 💕</h1>
+  <div class="subtext">Answer carefully 😌</div>
+
+  <button class="btn yes" onclick="nextPage2()">Yes 💖</button>
 </div>
 
 <!-- PAGE 3 -->
-<div id="page3" class="page hidden">
-    <img src="img/p6.jpg">
+<div class="page hidden" id="page3">
+  <div class="third-content">
+    <h1>Final Decision 😌</h1>
+    <p>
+      please padhu oppukovachu kadaaa..okay oppukokapothe dammunte no click chey
+    </p>
 
-    <div id="finalText">
-        Naa Seethavi Avuthava?? 🤌🏻💖
-    </div>
+    <button class="btn yes" onclick="showAlert()">Yes ❤️</button>
+    <button class="btn no" id="noBtn"
+      onmouseover="hideNo()">No 😜</button>
 
-    <div id="proposalText">
-        please padhu oppukovachu kadaaa..okay oppukokapothe dammunte no click chey 😜
+    <div class="hover-text" id="hoverText">
+      yenti NO click cheddam ante button miss ipoyindhaa....ithe chachinattu inka am click cheyyalo telusu gaa.....
     </div>
-
-    <div id="noHoverText">
-        yenti NO click cheddam ante button miss ipoyindhaa....
-        ithe chachinattu inka am click cheyyalo telusu gaa..... 😏
-    </div>
-
-    <div id="proposalBtns">
-        <button id="accept" class="btn">Yes 💍</button>
-        <button id="reject" class="btn">No 😜</button>
-    </div>
+  </div>
 </div>
 
-<!-- Instagram Chat Popup -->
-<div id="chatPopup">
-    <div class="chat-header">padhu 💖</div>
-    <div class="chat-body" id="chatBody"></div>
-    <div class="chat-footer">
-        <button onclick="closeChat()">Close 💕</button>
-    </div>
+<!-- ALERT -->
+<div class="alert-box" id="alertBox">
+  <div class="close" onclick="closeAlert()">✖</div>
+  <p>You clicked YES 😍💖<br>
+  Naa Seethavi Confirm 💍💕</p>
 </div>
 
 <script>
-const page1=document.getElementById("page1");
-const page2=document.getElementById("page2");
-const page3=document.getElementById("page3");
-const chatPopup=document.getElementById("chatPopup");
-const chatBody=document.getElementById("chatBody");
 
-/* Move button */
-function move(btn){
-    btn.style.position="absolute";
-    btn.style.left=Math.random()*(window.innerWidth-100)+"px";
-    btn.style.top=Math.random()*(window.innerHeight-50)+"px";
+/* PAGE NAVIGATION */
+function nextPage(){
+  document.getElementById("page1").classList.add("hidden");
+  document.getElementById("page2").classList.remove("hidden");
+  navigator.vibrate(300);
 }
 
-/* First page NO move */
-document.getElementById("no1").onmouseover=function(){move(this);}
-
-/* Page1 YES */
-document.getElementById("yes1").onclick=function(){
-    if (navigator.vibrate && /Mobi|Android/i.test(navigator.userAgent)) {
-        navigator.vibrate(5000);
-    }
-    setTimeout(()=>{
-        page1.classList.add("hidden");
-        page2.classList.remove("hidden");
-    },500);
+function nextPage2(){
+  document.getElementById("page2").classList.add("hidden");
+  document.getElementById("page3").classList.remove("hidden");
+  loveBlast();
+  navigator.vibrate([200,100,200]);
 }
 
-/* Page2 OK */
-document.getElementById("okBtn").onclick=function(){
-    page2.classList.add("hidden");
-    page3.classList.remove("hidden");
-    hearts();
+/* NO BUTTON DISAPPEAR */
+function hideNo(){
+  document.getElementById("noBtn").style.display="none";
+  document.getElementById("hoverText").style.display="block";
 }
 
-/* Page3 NO disappear */
-const reject=document.getElementById("reject");
-reject.onmouseover=reject.ontouchstart=function(){
-    reject.style.display="none";
-    document.getElementById("noHoverText").style.display="block";
+/* ALERT */
+function showAlert(){
+  document.getElementById("alertBox").style.display="block";
+  roseBlast();
 }
 
-/* Hearts */
-function hearts(){
-    setInterval(()=>{
-        const heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.top=window.innerHeight+"px";
-        page3.appendChild(heart);
-        setTimeout(()=>heart.remove(),3000);
-    },300);
+function closeAlert(){
+  document.getElementById("alertBox").style.display="none";
+  removeRoses();
 }
 
-/* YES Final */
-document.getElementById("accept").onclick=function(){
-    startConfetti();
-    openChat();
+/* LOVE SYMBOLS */
+function loveBlast(){
+  for(let i=0;i<20;i++){
+    let love=document.createElement("div");
+    love.className="love";
+    love.innerHTML="❤️";
+    love.style.left=Math.random()*100+"vw";
+    love.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(love);
+
+    setTimeout(()=>{love.remove();},4000);
+  }
 }
 
-/* Chat */
-function openChat(){
-    chatPopup.style.display="flex";
-    const messages=[
-        {text:"Vijju : yenti padhu navvuthunnavaa?... 😏",side:"right"},
-        {text:"Padhu : haa konchem..... 😊",side:"left"},
-        {text:"Vijju : yenti blush kuda avuthunattu unnav??.... 😜",side:"right"},
-        {text:"Padhu : aha ledhu andi.... 🙈",side:"left"},
-        {text:"Vijju : final ga inkaa yekkuva gaa love you ❤️ Boledenni chocolates 🍫 Chaalaa giftulu 🎁 And padhu ki ive maa mudhuluu 😘😘😘",side:"right"}
-    ];
-    let i=0;
-    function showMsg(){
-        if(i<messages.length){
-            const div=document.createElement("div");
-            div.className="msg "+messages[i].side;
-            div.innerText=messages[i].text;
-            chatBody.appendChild(div);
-            chatBody.scrollTop=chatBody.scrollHeight;
-            i++;
-            setTimeout(showMsg,1000);
-        }
-    }
-    showMsg();
-}
-function closeChat(){
-    chatPopup.style.display="none";
-    chatBody.innerHTML="";
+/* ROSE BLAST */
+function roseBlast(){
+  for(let i=0;i<25;i++){
+    let rose=document.createElement("div");
+    rose.className="rose";
+    rose.innerHTML="🌹";
+    rose.style.left=Math.random()*100+"vw";
+    rose.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(rose);
+  }
 }
 
-/* Confetti */
-function startConfetti(){
-    const canvas=document.getElementById("confettiCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
-    const pieces=[];
-    for(let i=0;i<150;i++){
-        pieces.push({
-            x:Math.random()*canvas.width,
-            y:Math.random()*canvas.height,
-            r:Math.random()*6+4,
-            d:Math.random()*150
-        });
-    }
-    setInterval(()=>{
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle="hsl("+Math.random()*360+",100%,50%)";
-        ctx.beginPath();
-        pieces.forEach(p=>{
-            ctx.moveTo(p.x,p.y);
-            ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
-            p.y+=3;
-            if(p.y>canvas.height) p.y=0;
-        });
-        ctx.fill();
-    },20);
+function removeRoses(){
+  document.querySelectorAll(".rose").forEach(r=>r.remove());
 }
+
 </script>
 
 </body>
